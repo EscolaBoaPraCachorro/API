@@ -1,6 +1,8 @@
 package com.api.service;
 
+import com.api.dto.cachorro.CachorroResponseDTO;
 import com.api.dto.nota.NotaResponseDTO;
+import com.api.dto.observacao.ObservacaoResponseDTO;
 import com.api.model.Cachorro;
 import com.api.model.Notas;
 import com.api.model.Observacao;
@@ -33,16 +35,17 @@ public class Service {
         this.repositoryObservacao = repositoryObservacao;
     }
 
-    public Cachorro buscarCaoPorId(Long id) {
+    public CachorroResponseDTO buscarCaoPorId(Long id) {
         Optional<Cachorro> cao = repositoryCachorro.findById(id);
-        return cao.orElse(null);
+        return objectMapper.convertValue(cao.get(), CachorroResponseDTO.class);
     }
 
-    public Notas lancarNotas(Long id_cachorro, Long id_professor, Integer nota) {
+    public NotaResponseDTO lancarNotas(Long id_cachorro, Long id_professor, Integer nota) {
         LocalDate localDate = LocalDate.now();
         Date data_atual = Date.valueOf(localDate);
         Notas notas = new Notas(id_cachorro, id_professor, nota, data_atual);
-        return repositoryNotas.save(notas);
+        Notas notasEnviadas = repositoryNotas.save(notas);
+        return objectMapper.convertValue(notasEnviadas, NotaResponseDTO.class);
     }
 
     public NotaResponseDTO atualizarNota (Long id_cachorro, Long id_professor, Integer antiga_nota, Integer nova_nota) {
@@ -52,10 +55,12 @@ public class Service {
         return objectMapper.convertValue(repositoryNotas.save(notaExistente), NotaResponseDTO.class);
     }
 
-    public Observacao enviarObservacao(Long id_cachorro, Long id_professor, String descricao) {
+    public ObservacaoResponseDTO enviarObservacao(Long id_cachorro, Long id_professor, String descricao) {
         LocalDate localDate = LocalDate.now();
         Date data_atual = Date.valueOf(localDate);
         Observacao observacao = new Observacao(id_cachorro, id_professor, descricao, data_atual);
-        return repositoryObservacao.save(observacao);
+
+        Observacao resposta = repositoryObservacao.save(observacao);
+        return objectMapper.convertValue(resposta, ObservacaoResponseDTO.class);
     }
 }
