@@ -1,9 +1,24 @@
-# Stage 1: Build do JAR
-FROM maven:3.9.2-eclipse-temurin-17 AS build
+# =============================
+# Etapa 1: Build com Maven + JDK 21
+# =============================
+FROM maven:3.9.4-eclipse-temurin-21 AS builder
+
+# Diretório de trabalho
 WORKDIR /app
+
+# Copia APENAS o pom.xml primeiro (melhora cache do Docker)
 COPY pom.xml .
+
+# Baixa dependências primeiro (cache eficiente)
+RUN mvn dependency:go-offline -DskipTests
+
+# Copia o código fonte
 COPY src ./src
-RUN mvn clean package -DskipTests
+
+# Build do projeto com retry em caso de falha de download
+RUN mvn clean package -DskipTests \
+    -Dmaven.wagon.http.retryHandler.count=3 \
+    -Dmaven.wagon.httpconnectionManager.ttlSeconds=25
 
 # Stage 2: Imagem final
 FROM openjdk:17-jdk-alpine

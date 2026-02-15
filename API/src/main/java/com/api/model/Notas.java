@@ -1,9 +1,6 @@
 package com.api.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -12,14 +9,16 @@ public class Notas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long id_cachorro;
-    private Long id_professor;
+    @Column(name = "id_cachorro")
+    private Long idCachorro;
+    @Column(name = "id_professor")
+    private Long idProfessor;
     private Integer nota;
     private Date data_publicacao;
 
-    public Notas(Long id_cachorro, Long id_professor, Integer nota, Date data_publicacao) {
-        this.id_cachorro = id_cachorro;
-        this.id_professor = id_professor;
+    public Notas(Long idCachorro, Long idProfessor, Integer nota, Date data_publicacao) {
+        this.idCachorro = idCachorro;
+        this.idProfessor = idProfessor;
         this.nota = nota;
         this.data_publicacao = data_publicacao;
     }
@@ -30,12 +29,12 @@ public class Notas {
         return id;
     }
 
-    public Long getId_cachorro() {
-        return id_cachorro;
+    public Long getIdCachorro() {
+        return idCachorro;
     }
 
-    public Long getId_professor() {
-        return id_professor;
+    public Long getIdProfessor() {
+        return idProfessor;
     }
 
     public Integer getNota() {
@@ -54,8 +53,8 @@ public class Notas {
     public String toString() {
         return "Notas{" +
                 "id=" + id +
-                ", id_cachorro=" + id_cachorro +
-                ", id_professor=" + id_professor +
+                ", idCachorro=" + idCachorro +
+                ", idProfessor=" + idProfessor +
                 ", nota=" + nota +
                 ", data_publicacao=" + data_publicacao +
                 '}';
