@@ -20,9 +20,28 @@ RUN mvn clean package -DskipTests \
     -Dmaven.wagon.http.retryHandler.count=3 \
     -Dmaven.wagon.httpconnectionManager.ttlSeconds=25
 
-# Stage 2: Imagem final
-FROM openjdk:17-jdk-alpine
-WORKDIR /API
-COPY --from=build /app/target/API-0.0.1-SNAPSHOT.jar .
-EXPOSE 8081
-CMD ["java", "-jar", "API-0.0.1-SNAPSHOT.jar"]
+# =============================
+# Etapa 2: Runtime com JDK 21 slim
+# =============================
+FROM openjdk:21-jdk-slim
+
+WORKDIR /app
+
+# Copia o JAR gerado na etapa de build
+COPY --from=builder /app/target/*.jar app.jar
+
+# Cria usuário não-root para segurança
+RUN groupadd -r spring && useradd -r -g spring spring
+USER spring
+
+# Porta que a API vai escutar
+EXPOSE 27100
+
+# Ativa o profile QA do Spring
+ENV SPRING_PROFILES_ACTIVE=qa
+
+# Otimizações JVM para containers
+ENV JAVA_OPTS="-XX:+UseContainerSupport -XX:MaxRAMPercentage=75.0"
+
+# Comando para iniciar a aplicação
+ENTRYPOINT ["java","-jar","app.jar"]
