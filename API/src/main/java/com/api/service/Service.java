@@ -49,7 +49,7 @@ public class Service {
     }
 
     public NotaResponseDTO atualizarNota (Long id_cachorro, Long id_professor, Integer antiga_nota, Integer nova_nota) {
-        Notas notaExistente = repositoryNotas.findById_cachorroAndId_professorAndNota(id_cachorro, id_professor, antiga_nota);
+        Notas notaExistente = repositoryNotas.findByIdCachorroAndIdProfessorAndNota(id_cachorro, id_professor, antiga_nota);
         notaExistente.setNota(nova_nota);
 
         return objectMapper.convertValue(repositoryNotas.save(notaExistente), NotaResponseDTO.class);

@@ -13,8 +13,8 @@ public class NotaResponseDTO {
 
     public NotaResponseDTO(Notas notas) {
         this.id = notas.getId();
-        this.id_cachorro = notas.getId_cachorro();
-        this.id_professor = notas.getId_professor();
+        this.id_cachorro = notas.getIdCachorro();
+        this.id_professor = notas.getIdProfessor();
         this.nota = notas.getNota();
         this.data_publicacao = notas.getData_publicacao();
     }

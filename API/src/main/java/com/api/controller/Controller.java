@@ -24,7 +24,7 @@ public class Controller {
 
     @PostMapping("/lançarNota")
     public String lancarNotas(@RequestBody Notas req) {
-        NotaResponseDTO res = service.lancarNotas(req.getId_cachorro(), req.getId_professor(), req.getNota());
+        NotaResponseDTO res = service.lancarNotas(req.getIdCachorro(), req.getIdProfessor(), req.getNota());
         CachorroResponseDTO cao = service.buscarCaoPorId(res.getId_cachorro());
         return "As notas, do cachorro" + cao.getNome() + ", foram lançadas, pelo professor " + res.getId_professor() + ", com sucesso!";
     }
