@@ -21,8 +21,8 @@ RUN mvn clean package -DskipTests \
     -Dmaven.wagon.httpconnectionManager.ttlSeconds=25
 
 # Stage 2: Imagem final
-FROM openjdk:17-jdk-alpine
+FROM eclipse-temurin:21-jdk-alpine
 WORKDIR /API
-COPY --from=build /app/target/API-0.0.1-SNAPSHOT.jar .
+COPY --from=builder /app/target/API-0.0.1-SNAPSHOT.jar app.jar
 EXPOSE 8081
-CMD ["java", "-jar", "API-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "app.jar"]
