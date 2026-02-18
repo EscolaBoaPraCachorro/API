@@ -14,13 +14,14 @@ public class Notas {
     @Column(name = "id_professor")
     private Long idProfessor;
     private Integer nota;
-    private Date data_publicacao;
+    @Column(name = "data_publicacao")
+    private Date dataPublicacao;
 
     public Notas(Long idCachorro, Long idProfessor, Integer nota, Date data_publicacao) {
         this.idCachorro = idCachorro;
         this.idProfessor = idProfessor;
         this.nota = nota;
-        this.data_publicacao = data_publicacao;
+        this.dataPublicacao = data_publicacao;
     }
 
     public Notas() {}
@@ -45,8 +46,8 @@ public class Notas {
         this.nota = nota;
     }
 
-    public Date getData_publicacao() {
-        return data_publicacao;
+    public Date getDataPublicacao() {
+        return dataPublicacao;
     }
 
     @Override
@@ -56,7 +57,7 @@ public class Notas {
                 ", idCachorro=" + idCachorro +
                 ", idProfessor=" + idProfessor +
                 ", nota=" + nota +
-                ", data_publicacao=" + data_publicacao +
+                ", dataPublicacao=" + dataPublicacao +
                 '}';
     }
 }

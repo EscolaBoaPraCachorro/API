@@ -1,9 +1,6 @@
 package com.api.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Date;
 
@@ -12,8 +9,10 @@ public class Observacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long id_cachorro;
-    private Long id_professor;
+    @Column(name = "id_cachorro")
+    private Long idCachorro;
+    @Column(name = "id_professor")
+    private Long idProfessor;
     private String descricao;
     private Date data_publicacao;
 
@@ -23,8 +22,8 @@ public class Observacao {
             String descricao,
             Date data_publicacao
     ) {
-        this.id_cachorro = id_cachorro;
-        this.id_professor = id_professor;
+        this.idCachorro = id_cachorro;
+        this.idProfessor = id_professor;
         this.descricao = descricao;
         this.data_publicacao = data_publicacao;
     }
@@ -36,11 +35,11 @@ public class Observacao {
     }
 
     public Long getId_cachorro() {
-        return id_cachorro;
+        return idCachorro;
     }
 
     public Long getId_professor() {
-        return id_professor;
+        return idProfessor;
     }
 
     public String getDescricao() {
@@ -59,8 +58,8 @@ public class Observacao {
     public String toString() {
         return "Observacao{" +
                 "id=" + id +
-                ", id_cachorro=" + id_cachorro +
-                ", id_professor=" + id_professor +
+                ", id_cachorro=" + idCachorro +
+                ", id_professor=" + idProfessor +
                 ", descricao='" + descricao + '\'' +
                 ", data_publicacao=" + data_publicacao +
                 '}';

@@ -13,6 +13,8 @@ import tools.jackson.databind.ObjectMapper;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @org.springframework.stereotype.Service
@@ -40,6 +42,28 @@ public class Service {
         return objectMapper.convertValue(cao.get(), CachorroResponseDTO.class);
     }
 
+    public List<NotaResponseDTO> buscarNotaPorIdCachorro(Long idCachorro) {
+        List<Notas> notas = repositoryNotas.findByIdCachorro(idCachorro);
+        List<NotaResponseDTO> listNotaDTO = new ArrayList<>();
+
+        for (Notas nota : notas) {
+            listNotaDTO.add(objectMapper.convertValue(nota, NotaResponseDTO.class));
+        }
+
+        return listNotaDTO;
+    }
+
+    public List<ObservacaoResponseDTO> buscarObservacaoPorIdCachorro(Long idCachorro) {
+        List<Observacao> obs = repositoryObservacao.findByIdCachorro(idCachorro);
+        List<ObservacaoResponseDTO> listObservacaoDTO = new ArrayList<>();
+
+        for (Observacao observacao : obs) {
+            listObservacaoDTO.add(objectMapper.convertValue(observacao, ObservacaoResponseDTO.class));
+        }
+
+        return listObservacaoDTO;
+    }
+
     public NotaResponseDTO lancarNotas(Long id_cachorro, Long id_professor, Integer nota) {
         LocalDate localDate = LocalDate.now();
         Date data_atual = Date.valueOf(localDate);
@@ -53,6 +77,20 @@ public class Service {
         notaExistente.setNota(nova_nota);
 
         return objectMapper.convertValue(repositoryNotas.save(notaExistente), NotaResponseDTO.class);
+    }
+
+    public Integer buscarNotaDoPrimeiroSemestrePorDisciplina (Long idCachorro, Long idProfessor) {
+        return repositoryNotas.findNotaByIdCachorroAndIdProfessorAndMonthLessThan(idCachorro, idProfessor);
+    }
+
+    public Integer buscarNotaDoSegundoSemestrePorDisciplina (Long idCachorro, Long idProfessor) {
+        return repositoryNotas.findNotaByIdCachorroAndIdProfessorAndMonthGreaterThan(idCachorro, idProfessor);
+    }
+
+    public Integer calcularMedia(Long idCachorro, Long idProfessor) {
+        Integer nota1 = buscarNotaDoPrimeiroSemestrePorDisciplina(idCachorro, idProfessor);
+        Integer nota2 = buscarNotaDoSegundoSemestrePorDisciplina(idCachorro, idProfessor);
+        return (nota1 + nota2) / 2;
     }
 
     public ObservacaoResponseDTO enviarObservacao(Long id_cachorro, Long id_professor, String descricao) {
