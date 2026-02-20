@@ -19,22 +19,22 @@ public class NotaController {
         this.service = service;
     }
 
-    @GetMapping("buscarNotaPorIdCachorro/{id}")
+    @GetMapping("/buscarNotaPorIdCachorro/{id}")
     public List<NotaResponseDTO> buscarNotaPorIdCao(@PathVariable Long id) {
         return service.buscarNotaPorIdCachorro(id);
     }
 
-    @GetMapping("buscarNotaDoPrimeiroSemestre")
+    @GetMapping("/buscarNotaDoPrimeiroSemestre")
     public Integer buscarNotaDoPrimeiroSemestre(@RequestBody NotaRequestDTO req) {
         return service.buscarNotaDoPrimeiroSemestrePorDisciplina(req.getId_cachorro(), req.getId_professor());
     }
 
-    @GetMapping("buscarNotaDoSegundoSemestre")
+    @GetMapping("/buscarNotaDoSegundoSemestre")
     public Integer buscarNotaDoSegundoSemestre(@RequestBody NotaRequestDTO req) {
         return service.buscarNotaDoSegundoSemestrePorDisciplina(req.getId_cachorro(), req.getId_professor());
     }
 
-    @PostMapping("/lançarNota")
+    @PostMapping("/inserirNota")
     public String lancarNotas(@RequestBody Notas req) {
         NotaResponseDTO res = service.lancarNotas(req.getIdCachorro(), req.getIdProfessor(), req.getNota());
         CachorroResponseDTO cao = service.buscarCaoPorId(res.getId_cachorro());

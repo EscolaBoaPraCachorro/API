@@ -23,7 +23,7 @@ public class ObservacaoController {
         return service.buscarObservacaoPorIdCachorro(id);
     }
 
-    @PostMapping("/enviarObservacoes")
+    @PostMapping("/inserirObservacoes")
     public String enviarObservacoes(@RequestBody Observacao req) {
         ObservacaoResponseDTO res = service.enviarObservacao(req.getId_cachorro(), req.getId_professor(), req.getDescricao());
         CachorroResponseDTO cao = service.buscarCaoPorId(res.getId_cachorro());
