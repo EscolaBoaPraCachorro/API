@@ -1,0 +1,22 @@
+### GET request to example server
+POST http://localhost:8080/api/cao/inserir
+Content-Type: application/json
+
+{
+  "nome": "Orelha",
+  "data_nascimento": "2016-07-08",
+  "tutor_id": 1,
+  "turma": "1E",
+  "data_cadastro": "2026-01-01",
+  "sexo": "M",
+  "raca": "Sem raça definida",
+  "ativo": false,
+  "tem_pedigree": false,
+  "rga": "RGA-123456",
+  "sin_patinhas": "sim",
+  "aceito": true,
+  "imagem": "https://imagem.com",
+  "alergia": "Nenhuma"
+}
+
+###

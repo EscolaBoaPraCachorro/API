@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class CachorroRequestDTO {
 
+    private Long id;
     private String nome;
     private Date data_nascimento;
     private Integer tutor_id;
@@ -15,6 +16,9 @@ public class CachorroRequestDTO {
     private Boolean tem_pedigree;
     private String rga;
     private String sin_patinhas;
+    private Boolean aceito;
+    private String imagem;
+    private String alergia;
 
     public String getNome() {
         return nome;
@@ -50,10 +54,6 @@ public class CachorroRequestDTO {
 
     public Date getData_cadastro() {
         return data_cadastro;
-    }
-
-    public void setData_cadastro(Date data_cadastro) {
-        this.data_cadastro = data_cadastro;
     }
 
     public String getSexo() {
@@ -92,15 +92,35 @@ public class CachorroRequestDTO {
         return rga;
     }
 
-    public void setRga(String rga) {
-        this.rga = rga;
-    }
-
     public String getSin_patinhas() {
         return sin_patinhas;
     }
 
     public void setSin_patinhas(String sin_patinhas) {
         this.sin_patinhas = sin_patinhas;
+    }
+
+    public Boolean getAceito() {
+        return aceito;
+    }
+
+    public void setAceito(Boolean aceito) {
+        this.aceito = aceito;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
+    public String getAlergia() {
+        return alergia;
+    }
+
+    public void setAlergia(String alergia) {
+        this.alergia = alergia;
     }
 }

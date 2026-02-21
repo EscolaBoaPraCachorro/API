@@ -23,8 +23,12 @@ public class Cachorro {
     private Boolean tem_pedigree;
     private String rga;
     private String sin_patinhas;
+    private Boolean aceito;
+    private String imagem;
+    private String alergia;
 
     public Cachorro(
+            Long id,
             String nome,
             Date data_nascimento,
             Integer tutor_id,
@@ -35,8 +39,12 @@ public class Cachorro {
             Boolean ativo,
             Boolean tem_pedigree,
             String rga,
-            String sin_patinhas
+            String sin_patinhas,
+            Boolean aceito,
+            String imagem,
+            String alergia
     ) {
+        this.id = id;
         this.nome = nome;
         this.data_nascimento = data_nascimento;
         this.tutor_id = tutor_id;
@@ -48,6 +56,9 @@ public class Cachorro {
         this.tem_pedigree = tem_pedigree;
         this.rga = rga;
         this.sin_patinhas = sin_patinhas;
+        this.aceito = aceito;
+        this.imagem = imagem;
+        this.alergia = alergia;
     }
 
     public Cachorro() {}
@@ -132,6 +143,30 @@ public class Cachorro {
         this.sin_patinhas = sin_patinhas;
     }
 
+    public Boolean getAceito() {
+        return aceito;
+    }
+
+    public void setAceito(Boolean aceito) {
+        this.aceito = aceito;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
+    public String getAlergia() {
+        return alergia;
+    }
+
+    public void setAlergia(String alergia) {
+        this.alergia = alergia;
+    }
+
     @Override
     public String toString() {
         return "Cachorro{" +
@@ -147,6 +182,9 @@ public class Cachorro {
                 ", tem_pedigree=" + tem_pedigree +
                 ", rga='" + rga + '\'' +
                 ", sin_patinhas='" + sin_patinhas + '\'' +
+                ", aceito=" + aceito +
+                ", imagem='" + imagem + '\'' +
+                ", alergia='" + alergia + '\'' +
                 '}';
     }
 }

@@ -1,0 +1,9 @@
+### GET request to example server
+PUT http://localhost:8080/api/notas/atualizarNota
+Content-Type: application/json
+
+{
+  
+}
+
+###

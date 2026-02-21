@@ -18,6 +18,9 @@ public class CachorroResponseDTO {
     private Boolean tem_pedigree;
     private String rga;
     private String sin_patinhas;
+    private Boolean aceito;
+    private String imagem;
+    private String alergia;
 
     public CachorroResponseDTO(Cachorro cao) {
         this.id = cao.getId();
@@ -83,4 +86,6 @@ public class CachorroResponseDTO {
     public String getSin_patinhas() {
         return sin_patinhas;
     }
+
+
 }
