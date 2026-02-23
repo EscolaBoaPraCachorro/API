@@ -25,7 +25,7 @@ public class Cachorro {
     private String sin_patinhas;
     private Boolean aceito;
     private String imagem;
-    private String alergia;
+    private String alergias;
 
     public Cachorro(
             Long id,
@@ -58,7 +58,7 @@ public class Cachorro {
         this.sin_patinhas = sin_patinhas;
         this.aceito = aceito;
         this.imagem = imagem;
-        this.alergia = alergia;
+        this.alergias = alergia;
     }
 
     public Cachorro() {}
@@ -160,11 +160,11 @@ public class Cachorro {
     }
 
     public String getAlergia() {
-        return alergia;
+        return alergias;
     }
 
     public void setAlergia(String alergia) {
-        this.alergia = alergia;
+        this.alergias = alergia;
     }
 
     @Override
@@ -184,7 +184,7 @@ public class Cachorro {
                 ", sin_patinhas='" + sin_patinhas + '\'' +
                 ", aceito=" + aceito +
                 ", imagem='" + imagem + '\'' +
-                ", alergia='" + alergia + '\'' +
+                ", alergia='" + alergias + '\'' +
                 '}';
     }
 }

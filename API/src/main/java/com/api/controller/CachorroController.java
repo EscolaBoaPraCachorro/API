@@ -2,6 +2,7 @@ package com.api.controller;
 
 import com.api.dto.cachorro.CachorroRequestDTO;
 import com.api.dto.cachorro.CachorroResponseDTO;
+import com.api.service.CachorroService;
 import com.api.service.Service;
 import org.springframework.web.bind.annotation.*;
 
@@ -9,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/cao")
 public class CachorroController {
 
-    private final Service service;
+    private final CachorroService service;
 
-    public CachorroController(Service service) { this.service = service; }
+    public CachorroController(CachorroService service) { this.service = service; }
 
     @GetMapping("/buscarCaoPorId/{id}")
     public CachorroResponseDTO buscarCaoPorId(@PathVariable Long id) {
