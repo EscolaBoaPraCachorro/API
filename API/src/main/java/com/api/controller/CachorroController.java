@@ -3,7 +3,6 @@ package com.api.controller;
 import com.api.dto.cachorro.CachorroRequestDTO;
 import com.api.dto.cachorro.CachorroResponseDTO;
 import com.api.service.CachorroService;
-import com.api.service.Service;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -19,9 +18,20 @@ public class CachorroController {
         return service.buscarCaoPorId(id);
     }
 
+    @GetMapping("buscarTurma/{turma}")
+    public String buscarTurma(@PathVariable String turma) {
+        return service.buscarTurma(turma);
+    }
+
     @PostMapping("/inserir")
     public String inserir(@RequestBody CachorroRequestDTO req) {
-        CachorroResponseDTO cao = service.cadastrarCachorro(req);
-        return "O Cachorro " + cao.getNome() + ", foi cadastrado com sucesso! ID: " + cao.getId();
+        CachorroResponseDTO res = service.cadastrarCachorro(req);
+        return "O cachorro " + res.getNome() + ", foi cadastrado com sucesso! ID: " + res.getId();
+    }
+
+    @PatchMapping("/atualizarMatricula/{id}")
+    public String atualizarMatricula(@RequestBody CachorroRequestDTO req, @PathVariable Long id) {
+        CachorroResponseDTO res = service.atualizarAtivo(id, req.getAtivo());
+        return "A matricula do cachorro, com ID: " + res.getId() + ", foi atualizado com sucesso!";
     }
 }
