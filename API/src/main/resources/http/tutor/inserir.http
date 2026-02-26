@@ -1,0 +1,18 @@
+### GET request to example server
+POST http://localhost:8080/api/tutor/cadastrar
+Content-Type: application/json
+
+{
+  "nome": "Alexandre Rossi",
+  "dataNascimento": "1973-02-26",
+  "endereco": "R. da Reitoria, 374 - Butantã, São Paulo - SP, 05508-220",
+  "data_cadastro": "2026-02-26",
+  "genero": "Masculino",
+  "telefone": "(11) 9XXXX-XXXX",
+  "cpf": "XXX.XXX.XXX-XX",
+  "rg": "XX.XXX.XXX.XXX",
+  "email": "tutor1@gmail.com",
+  "imagem": "https://imagem.com"
+}
+
+###

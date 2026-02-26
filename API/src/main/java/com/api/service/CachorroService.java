@@ -7,6 +7,7 @@ import com.api.repository.RepositoryCachorro;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -18,6 +19,10 @@ public class CachorroService {
     public CachorroService(RepositoryCachorro repositoryCachorro, ObjectMapper objectMapper) {
         this.repositoryCachorro = repositoryCachorro;
         this.objectMapper = objectMapper;
+    }
+
+    public List<Cachorro> listarCaes() {
+        return repositoryCachorro.findAll();
     }
 
     public CachorroResponseDTO buscarCaoPorId(Long id) {

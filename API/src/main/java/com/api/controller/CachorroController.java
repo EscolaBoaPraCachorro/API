@@ -2,8 +2,11 @@ package com.api.controller;
 
 import com.api.dto.cachorro.CachorroRequestDTO;
 import com.api.dto.cachorro.CachorroResponseDTO;
+import com.api.model.Cachorro;
 import com.api.service.CachorroService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/cao")
@@ -12,6 +15,11 @@ public class CachorroController {
     private final CachorroService service;
 
     public CachorroController(CachorroService service) { this.service = service; }
+
+    @GetMapping("/listar")
+    public List<Cachorro> listarCaes() {
+        return service.listarCaes();
+    }
 
     @GetMapping("/buscarCaoPorId/{id}")
     public CachorroResponseDTO buscarCaoPorId(@PathVariable Long id) {
