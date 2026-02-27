@@ -1,23 +1,39 @@
 package com.api.dto.cachorro;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+
 import java.util.Date;
 
+@Schema(description = "Objeto para criação/atualização da tabela Cachorro")
 public class CachorroRequestDTO {
 
-    private Long id;
+    @Schema(description = "Nome do cachorro", example = "Orelha")
     private String nome;
+    @Schema(description = "Data de nascimeno do cachorro", example = "2016-07-08")
     private Date data_nascimento;
+    @Schema(description = "ID do tutor", example = "1")
     private Integer tutor_id;
+    @Schema(description = "Turma em que o cão está estudando", example = "1E")
     private String turma;
+    @Schema(description = "Data de qunado o cão foi cadastrado no sistema", example = "2026-01-01")
     private Date data_cadastro;
+    @Schema(description = "Gênero do cão", example = "M")
     private String sexo;
+    @Schema(description = "Raça do cão", example = "Sem raça definida")
     private String raca;
+    @Schema(description = "Se a matrícula do cão foi aceita ou não", example = "false")
     private Boolean ativo;
+    @Schema(description = "Se o cão tem pedigree ou não", example = "false")
     private Boolean tem_pedigree;
+    @Schema(description = "O RGA do cão", example = "RGA-123456")
     private String rga;
+    @Schema(description = "", example = "sim")
     private String sin_patinhas;
+    @Schema(description = "", example = "true")
     private Boolean aceito;
+    @Schema(description = "Uma foto do cão", example = "https://imagem.com")
     private String imagem;
+    @Schema(description = "A alergia do cão ou não", example = "Nenhuma")
     private String alergia;
 
     public String getNome() {

@@ -15,11 +15,13 @@ public class GradeHoraria {
     private String turma;
     private Long idProfessor;
     private Time horario;
+    private String dia_semana;
 
-    public GradeHoraria(String turma, Long idProfessor, Time horario) {
+    public GradeHoraria(String turma, Long idProfessor, Time horario, String dia_semana) {
         this.turma = turma;
         this.idProfessor = idProfessor;
         this.horario = horario;
+        this.dia_semana = dia_semana;
     }
 
     public GradeHoraria() {}
@@ -48,6 +50,14 @@ public class GradeHoraria {
         this.horario = horario;
     }
 
+    public String getDia_semana() {
+        return dia_semana;
+    }
+
+    public void setDia_semana(String dia_semana) {
+        this.dia_semana = dia_semana;
+    }
+
     @Override
     public String toString() {
         return "GradeHoraria{" +
@@ -55,6 +65,7 @@ public class GradeHoraria {
                 ", turma='" + turma + '\'' +
                 ", idProfessor=" + idProfessor +
                 ", horario=" + horario +
+                ", dia_semana='" + dia_semana + '\'' +
                 '}';
     }
 }

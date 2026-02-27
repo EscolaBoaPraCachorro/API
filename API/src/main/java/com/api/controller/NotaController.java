@@ -6,7 +6,6 @@ import com.api.dto.nota.NotaResponseDTO;
 import com.api.model.Notas;
 import com.api.service.CachorroService;
 import com.api.service.NotasService;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,6 +34,11 @@ public class NotaController {
     @GetMapping("/buscarNotaDoSegundoSemestre")
     public Integer buscarNotaDoSegundoSemestre(@RequestBody NotaRequestDTO req) {
         return notasService.buscarNotaDoSegundoSemestrePorDisciplina(req.getId_cachorro(), req.getId_professor());
+    }
+
+    @GetMapping("/calcularMedia")
+    public Integer calcularMedia(@RequestBody NotaRequestDTO req) {
+        return notasService.calcularMedia(req.getId_cachorro(), req.getId_professor());
     }
 
     @PostMapping("/inserirNota")

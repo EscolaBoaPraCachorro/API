@@ -10,11 +10,9 @@ import java.util.List;
 @Service
 public class GradeHorariaService {
     private final RepositoryGradeHoraria repository;
-    private final ObjectMapper objectMapper;
 
-    public GradeHorariaService(RepositoryGradeHoraria repositoryGradeHoraria, ObjectMapper objectMapper) {
+    public GradeHorariaService(RepositoryGradeHoraria repositoryGradeHoraria) {
         this.repository = repositoryGradeHoraria;
-        this.objectMapper = objectMapper;
     }
 
     public List<GradeHoraria> buscarHorario(){

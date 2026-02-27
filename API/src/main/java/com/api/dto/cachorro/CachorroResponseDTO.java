@@ -1,9 +1,11 @@
 package com.api.dto.cachorro;
 
 import com.api.model.Cachorro;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.util.Date;
 
+@Schema(description = "Objeto de resposta com dados da tabela Cachorro")
 public class CachorroResponseDTO {
 
     private Long id;
