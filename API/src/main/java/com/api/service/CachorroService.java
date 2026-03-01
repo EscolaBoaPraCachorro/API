@@ -31,8 +31,12 @@ public class CachorroService {
     }
 
     public String buscarTurma(String turma) {
-        Cachorro cao = repositoryCachorro.findByTurma(turma);
+        Cachorro cao = repositoryCachorro.findTurma(turma);
         return cao.getTurma();
+    }
+
+    public List<Cachorro> buscarCachorroPorTurma(String turma) {
+        return repositoryCachorro.findByTurma(turma);
     }
 
     public CachorroResponseDTO cadastrarCachorro(CachorroRequestDTO dto) {

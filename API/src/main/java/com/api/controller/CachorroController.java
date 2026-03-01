@@ -30,6 +30,11 @@ public class CachorroController {
         return service.buscarTurma(turma);
     }
 
+    @GetMapping("buscarCaoPorTurma/{turma}")
+    public List<Cachorro> buscarCaoPorTurma(@PathVariable String turma) {
+        return service.buscarCachorroPorTurma(turma);
+    }
+
     @PostMapping("/inserir")
     public String inserir(@RequestBody CachorroRequestDTO req) {
         CachorroResponseDTO res = service.cadastrarCachorro(req);
