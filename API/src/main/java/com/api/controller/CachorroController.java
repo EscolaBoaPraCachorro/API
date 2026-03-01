@@ -5,7 +5,6 @@ import com.api.dto.cachorro.CachorroResponseDTO;
 import com.api.model.Cachorro;
 import com.api.service.CachorroService;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
