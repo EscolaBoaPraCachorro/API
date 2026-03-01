@@ -1,14 +1,12 @@
 package com.api.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
 
 import java.util.Set;
 
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     private Long id;

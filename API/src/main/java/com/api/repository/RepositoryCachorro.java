@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface RepositoryCachorro extends JpaRepository<Cachorro, Long> {
-    Cachorro findTurma(String turma);
+    Cachorro findCachorroByTurma(String turma);
 
     List<Cachorro> findByTurma(String turma);
 }

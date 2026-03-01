@@ -31,7 +31,7 @@ public class CachorroService {
     }
 
     public String buscarTurma(String turma) {
-        Cachorro cao = repositoryCachorro.findTurma(turma);
+        Cachorro cao = repositoryCachorro.findCachorroByTurma(turma);
         return cao.getTurma();
     }
 
