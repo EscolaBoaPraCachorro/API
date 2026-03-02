@@ -2,11 +2,14 @@ package com.api.service;
 
 import com.api.dto.cachorro.CachorroRequestDTO;
 import com.api.dto.cachorro.CachorroResponseDTO;
+import com.api.dto.observacao.ObservacaoResponseDTO;
 import com.api.model.Cachorro;
+import com.api.model.Observacao;
 import com.api.repository.RepositoryCachorro;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,8 +24,15 @@ public class CachorroService {
         this.objectMapper = objectMapper;
     }
 
-    public List<Cachorro> listarCaes() {
-        return repositoryCachorro.findAll();
+    public List<CachorroResponseDTO> listarCaes() {
+        List<Cachorro> cao = repositoryCachorro.findAll();
+        List<CachorroResponseDTO> listCaoDTO = new ArrayList<>();
+
+        for (Cachorro cachorro : cao) {
+            listCaoDTO.add(objectMapper.convertValue(cachorro, CachorroResponseDTO.class));
+        }
+
+        return listCaoDTO;
     }
 
     public CachorroResponseDTO buscarCaoPorId(Long id) {
@@ -31,11 +41,11 @@ public class CachorroService {
     }
 
     public String buscarTurma(String turma) {
-        Cachorro cao = repositoryCachorro.findCachorroByTurma(turma);
+        CachorroResponseDTO cao = repositoryCachorro.findCachorroByTurma(turma);
         return cao.getTurma();
     }
 
-    public List<Cachorro> buscarCachorroPorTurma(String turma) {
+    public List<CachorroResponseDTO> buscarCachorroPorTurma(String turma) {
         return repositoryCachorro.findByTurma(turma);
     }
 

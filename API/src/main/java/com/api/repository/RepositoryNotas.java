@@ -1,5 +1,6 @@
 package com.api.repository;
 
+import com.api.dto.nota.NotaResponseDTO;
 import com.api.model.Notas;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -10,7 +11,7 @@ import java.util.List;
 public interface RepositoryNotas extends JpaRepository<Notas, Long> {
     List<Notas> findByIdCachorro(Long id);
 
-    List<Notas> findByIdCachorroAndIdProfessor(Long idCachorro, Long idProfessor);
+    List<NotaResponseDTO> findByIdCachorroAndIdProfessor(Long idCachorro, Long idProfessor);
 
     Notas findByIdCachorroAndIdProfessorAndNota(Long idCachorro, Long idProfessor, Integer nota);
 

@@ -2,7 +2,6 @@ package com.api.controller;
 
 import com.api.dto.cachorro.CachorroRequestDTO;
 import com.api.dto.cachorro.CachorroResponseDTO;
-import com.api.model.Cachorro;
 import com.api.service.CachorroService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -16,7 +15,7 @@ public class CachorroController {
     public CachorroController(CachorroService service) { this.service = service; }
 
     @GetMapping("/listar")
-    public List<Cachorro> listarCaes() {
+    public List<CachorroResponseDTO> listarCaes() {
         return service.listarCaes();
     }
 
@@ -31,7 +30,7 @@ public class CachorroController {
     }
 
     @GetMapping("buscarCaoPorTurma/{turma}")
-    public List<Cachorro> buscarCaoPorTurma(@PathVariable String turma) {
+    public List<CachorroResponseDTO> buscarCaoPorTurma(@PathVariable String turma) {
         return service.buscarCachorroPorTurma(turma);
     }
 

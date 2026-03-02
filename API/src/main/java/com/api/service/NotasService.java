@@ -32,6 +32,10 @@ public class NotasService {
         return listNotaDTO;
     }
 
+    public List<NotaResponseDTO> buscarNotaPorIdCachorroEDisciplina(Long idCachorro, Long idProfessor) {
+        return repository.findByIdCachorroAndIdProfessor(idCachorro, idProfessor);
+    }
+
     public Integer buscarNotaDoPrimeiroSemestrePorDisciplina (Long idCachorro, Long idProfessor) {
         return repository.findNotaByIdCachorroAndIdProfessorAndMonthLessThan(idCachorro, idProfessor);
     }

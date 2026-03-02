@@ -21,8 +21,8 @@ public class ObservacaoService {
         this.objectMapper = objectMapper;
     }
 
-    public List<ObservacaoResponseDTO> buscarObservacaoPorIdCachorro(Long idCachorro) {
-        List<Observacao> obs = repository.findByIdCachorro(idCachorro);
+    public List<ObservacaoResponseDTO> buscarObservacaoPorIdCachorroEDisciplina(Long idCachorro, Long idProfessor) {
+        List<Observacao> obs = repository.findByIdCachorroAndIdProfessor(idCachorro, idProfessor);
         List<ObservacaoResponseDTO> listObservacaoDTO = new ArrayList<>();
 
         for (Observacao observacao : obs) {

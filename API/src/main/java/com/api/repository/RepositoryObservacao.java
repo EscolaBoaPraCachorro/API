@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface RepositoryObservacao extends JpaRepository<Observacao, Long> {
     List<Observacao> findByIdCachorro(Long id);
+
+    List<Observacao> findByIdCachorroAndIdProfessor(Long idCachorro, Long idProfessor);
 }

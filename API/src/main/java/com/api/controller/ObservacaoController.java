@@ -22,9 +22,9 @@ public class ObservacaoController {
         this.cachorroService = cachorroService;
     }
 
-    @GetMapping("buscarObservacaoPorIdCachorro/{id}")
-    public List<ObservacaoResponseDTO> buscarObservacaoPorIdCachorro(@PathVariable Long id) {
-        return observacaoService.buscarObservacaoPorIdCachorro(id);
+    @GetMapping("buscarObservacaoPorIdCachorroEDisciplina")
+    public List<ObservacaoResponseDTO> buscarObservacaoPorIdCachorroEDisciplina(@RequestBody ObservacaoRequestDTO req) {
+        return observacaoService.buscarObservacaoPorIdCachorroEDisciplina(req.getId_cachorro(), req.getId_professor());
     }
 
     @PostMapping("/inserirObservacoes")

@@ -1,12 +1,13 @@
 package com.api.repository;
 
+import com.api.dto.cachorro.CachorroResponseDTO;
 import com.api.model.Cachorro;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
 public interface RepositoryCachorro extends JpaRepository<Cachorro, Long> {
-    Cachorro findCachorroByTurma(String turma);
+    CachorroResponseDTO findCachorroByTurma(String turma);
 
-    List<Cachorro> findByTurma(String turma);
+    List<CachorroResponseDTO> findByTurma(String turma);
 }

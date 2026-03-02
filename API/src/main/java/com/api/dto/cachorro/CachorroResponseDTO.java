@@ -89,5 +89,15 @@ public class CachorroResponseDTO {
         return sin_patinhas;
     }
 
+    public Boolean getAceito() {
+        return aceito;
+    }
 
+    public String getImagem() {
+        return imagem;
+    }
+
+    public String getAlergia() {
+        return alergia;
+    }
 }
