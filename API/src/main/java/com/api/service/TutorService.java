@@ -1,8 +1,11 @@
 package com.api.service;
 
+import com.api.dto.cachorro.CachorroResponseDTO;
 import com.api.dto.tutor.TutorRequestDTO;
 import com.api.dto.tutor.TutorResponseDTO;
+import com.api.model.Cachorro;
 import com.api.model.Tutor;
+import com.api.repository.RepositoryCachorro;
 import com.api.repository.RepositoryTutor;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
@@ -10,11 +13,23 @@ import tools.jackson.databind.ObjectMapper;
 @Service
 public class TutorService {
     private final RepositoryTutor repository;
+    private final CachorroService service;
     private final ObjectMapper objectMapper;
 
-    public TutorService(RepositoryTutor repository, ObjectMapper objectMapper) {
-        this.repository = repository;
+    public TutorService(
+            RepositoryTutor repositoryTutor,
+            CachorroService cachorroService,
+            ObjectMapper objectMapper
+    ) {
+        this.repository = repositoryTutor;
+        this.service = cachorroService;
         this.objectMapper = objectMapper;
+    }
+
+    public String buscarImagemPorIdCachorro(Long idCachorro) {
+        CachorroResponseDTO cao = service.buscarCaoPorId(idCachorro);
+        TutorResponseDTO tutor = repository.findImagemById(cao.getTutor_id());
+        return tutor.getImagem();
     }
 
     public TutorResponseDTO cadastrarTutor(TutorRequestDTO dto){

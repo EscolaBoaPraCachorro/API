@@ -14,7 +14,7 @@ public class Cachorro {
     private Long id;
     private String nome;
     private Date data_nascimento;
-    private Integer tutor_id;
+    private Long tutor_id;
     private String turma;
     private Date data_cadastro;
     private String sexo;
@@ -31,7 +31,7 @@ public class Cachorro {
             Long id,
             String nome,
             Date data_nascimento,
-            Integer tutor_id,
+            Long tutor_id,
             String turma,
             Date data_cadastro,
             String sexo,
@@ -83,7 +83,7 @@ public class Cachorro {
         this.data_nascimento = data_nascimento;
     }
 
-    public Integer getTutor_id() {
+    public Long getTutor_id() {
         return tutor_id;
     }
 

@@ -11,7 +11,7 @@ public class CachorroResponseDTO {
     private Long id;
     private String nome;
     private Date data_nascimento;
-    private Integer tutor_id;
+    private Long tutor_id;
     private String turma;
     private Date data_cadastro;
     private String sexo;
@@ -53,7 +53,7 @@ public class CachorroResponseDTO {
         return data_nascimento;
     }
 
-    public Integer getTutor_id() {
+    public Long getTutor_id() {
         return tutor_id;
     }
 

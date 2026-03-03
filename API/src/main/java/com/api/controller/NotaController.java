@@ -26,9 +26,11 @@ public class NotaController {
         return notasService.buscarNotaPorIdCachorro(id);
     }
 
-    @GetMapping("/buscarNotaPorIdCachorroEDisciplina")
-    public List<NotaResponseDTO> buscarNotaPorIdCaoEDisciplina(@RequestBody NotaRequestDTO req) {
-        return notasService.buscarNotaPorIdCachorroEDisciplina(req.getId_cachorro(), req.getId_professor());
+    @GetMapping("/buscarNotaPorIdCachorro/{idCachorro}/Disciplina/{idProfessor}")
+    public List<NotaResponseDTO> buscarNotaPorIdCaoEDisciplina(
+            @PathVariable Long idCachorro, @PathVariable Long idProfessor
+    ) {
+        return notasService.buscarNotaPorIdCachorroEDisciplina(idCachorro, idProfessor);
     }
 
     @GetMapping("/buscarNotaDoPrimeiroSemestre")
