@@ -1,4 +1,4 @@
 ### GET request to example server
-GET http://localhost:8080/api/tutor/buscarImagemPorIdCachorro/2
+GET http://localhost:8080/api/tutor/buscarImagemPorId/1
 
 ###

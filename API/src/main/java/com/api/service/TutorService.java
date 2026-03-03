@@ -26,10 +26,12 @@ public class TutorService {
         this.objectMapper = objectMapper;
     }
 
-    public String buscarImagemPorIdCachorro(Long idCachorro) {
-        CachorroResponseDTO cao = service.buscarCaoPorId(idCachorro);
-        TutorResponseDTO tutor = repository.findImagemById(cao.getTutor_id());
-        return tutor.getImagem();
+    public Long buscarIdPorIdCachorro(Long idCachorro) {
+        return service.buscarCaoPorId(idCachorro).getTutor_id();
+    }
+
+    public String buscarImagemPorIdTutor(Long idTutor) {
+        return repository.findImagemById(idTutor);
     }
 
     public TutorResponseDTO cadastrarTutor(TutorRequestDTO dto){

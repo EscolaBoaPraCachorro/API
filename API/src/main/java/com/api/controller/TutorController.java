@@ -14,9 +14,14 @@ public class TutorController {
         this.service = service;
     }
 
-    @GetMapping("/buscarImagemPorIdCachorro/{id}")
-    public String buscarImagemPorIdCachorro(@PathVariable Long id) {
-        return service.buscarImagemPorIdCachorro(id);
+    @GetMapping("/buscarIdPorIdCachorro/{id}")
+    public Long buscarIdPorIdCachorro(@PathVariable Long id) {
+        return service.buscarIdPorIdCachorro(id);
+    }
+
+    @GetMapping("/buscarImagemPorId/{id}")
+    public String buscarImagemPorIdTutor(@PathVariable Long id) {
+        return service.buscarImagemPorIdTutor(id);
     }
 
     @PostMapping("/cadastrar")
