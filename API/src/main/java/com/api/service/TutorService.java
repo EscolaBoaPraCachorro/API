@@ -1,11 +1,8 @@
 package com.api.service;
 
-import com.api.dto.cachorro.CachorroResponseDTO;
 import com.api.dto.tutor.TutorRequestDTO;
 import com.api.dto.tutor.TutorResponseDTO;
-import com.api.model.Cachorro;
 import com.api.model.Tutor;
-import com.api.repository.RepositoryCachorro;
 import com.api.repository.RepositoryTutor;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
@@ -31,7 +28,8 @@ public class TutorService {
     }
 
     public String buscarImagemPorIdTutor(Long idTutor) {
-        return repository.findImagemById(idTutor);
+        Tutor tutor = objectMapper.convertValue(repository.findById(idTutor), Tutor.class);
+        return tutor.getImagem();
     }
 
     public TutorResponseDTO cadastrarTutor(TutorRequestDTO dto){

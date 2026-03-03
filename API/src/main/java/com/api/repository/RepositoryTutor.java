@@ -6,5 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface RepositoryTutor extends JpaRepository<Tutor, Long> {
-    String findImagemById(Long id);
 }

@@ -2,7 +2,6 @@ package com.api.service;
 
 import com.api.dto.cachorro.CachorroRequestDTO;
 import com.api.dto.cachorro.CachorroResponseDTO;
-import com.api.dto.observacao.ObservacaoResponseDTO;
 import com.api.model.Cachorro;
 import com.api.model.Observacao;
 import com.api.repository.RepositoryCachorro;
@@ -36,8 +35,8 @@ public class CachorroService {
     }
 
     public CachorroResponseDTO buscarCaoPorId(Long id) {
-        Optional<Cachorro> cao = repositoryCachorro.findById(id);
-        return objectMapper.convertValue(cao.get(), CachorroResponseDTO.class);
+        Cachorro cao = objectMapper.convertValue(repositoryCachorro.findById(id), Cachorro.class);
+        return objectMapper.convertValue(cao, CachorroResponseDTO.class);
     }
 
     public String buscarTurma(String turma) {
