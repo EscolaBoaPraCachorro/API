@@ -25,13 +25,13 @@ public class CachorroController {
     }
 
     @GetMapping("buscarTurma/{turma}")
-    public CachorroResponseDTO buscarTurma(@PathVariable String turma) {
-        return service.buscarTurma(turma);
+    public CachorroResponseDTO buscarCaoPorTurma(@PathVariable String turma) {
+        return service.buscarCachorroPorTurma(turma);
     }
 
     @GetMapping("buscarCaoPorTurma/{turma}")
-    public List<CachorroResponseDTO> buscarCaoPorTurma(@PathVariable String turma) {
-        return service.buscarCachorroPorTurma(turma);
+    public List<CachorroResponseDTO> buscarTurma(@PathVariable String turma) {
+        return service.buscarTurma(turma);
     }
 
     @PostMapping("/inserir")

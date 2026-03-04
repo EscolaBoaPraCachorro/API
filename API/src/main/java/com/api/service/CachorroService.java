@@ -39,11 +39,11 @@ public class CachorroService {
         return objectMapper.convertValue(cao, CachorroResponseDTO.class);
     }
 
-    public CachorroResponseDTO buscarTurma(String turma) {
+    public CachorroResponseDTO buscarCachorroPorTurma(String turma) {
         return repositoryCachorro.findCachorroByTurma(turma);
     }
 
-    public List<CachorroResponseDTO> buscarCachorroPorTurma(String turma) {
+    public List<CachorroResponseDTO> buscarTurma(String turma) {
         return repositoryCachorro.findByTurma(turma);
     }
 
