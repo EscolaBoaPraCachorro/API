@@ -2,7 +2,6 @@ package com.api.controller;
 
 import com.api.dto.professor.ProfessorResponseDTO;
 import com.api.service.ProfessorService;
-import com.api.service.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +14,9 @@ import java.util.List;
 @RequestMapping("/api/professor")
 public class ProfessorController {
     private final ProfessorService professorService;
-    private final Service service;
 
-    public ProfessorController(ProfessorService professorService, Service service) {
+    public ProfessorController(ProfessorService professorService) {
         this.professorService = professorService;
-        this.service = service;
     }
 
     @GetMapping("/listar")

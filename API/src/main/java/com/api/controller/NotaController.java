@@ -3,7 +3,6 @@ package com.api.controller;
 import com.api.dto.cachorro.CachorroResponseDTO;
 import com.api.dto.nota.NotaRequestDTO;
 import com.api.dto.nota.NotaResponseDTO;
-import com.api.model.Notas;
 import com.api.service.CachorroService;
 import com.api.service.NotasService;
 import org.springframework.web.bind.annotation.*;

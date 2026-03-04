@@ -3,20 +3,19 @@ package com.api.service;
 import com.api.dto.cachorro.CachorroRequestDTO;
 import com.api.dto.cachorro.CachorroResponseDTO;
 import com.api.model.Cachorro;
-import com.api.model.Observacao;
 import com.api.repository.RepositoryCachorro;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class CachorroService {
 
-    private RepositoryCachorro repositoryCachorro;
-    private ObjectMapper objectMapper;
+    private final RepositoryCachorro repositoryCachorro;
+    private final ObjectMapper objectMapper;
 
     public CachorroService(RepositoryCachorro repositoryCachorro, ObjectMapper objectMapper) {
         this.repositoryCachorro = repositoryCachorro;
@@ -45,6 +44,26 @@ public class CachorroService {
 
     public List<CachorroResponseDTO> buscarTurma(String turma) {
         return repositoryCachorro.findByTurma(turma);
+    }
+
+    public String buscarImagemPorCachorro(Long id) {
+        CachorroResponseDTO cao = objectMapper.convertValue(repositoryCachorro.findById(id), CachorroResponseDTO.class);
+        return cao.getImagem();
+    }
+
+    public Date buscarDataNascimentoPorCachorro(Long id) {
+        CachorroResponseDTO cao = objectMapper.convertValue(repositoryCachorro.findById(id), CachorroResponseDTO.class);
+        return cao.getData_nascimento();
+    }
+
+    public String buscarNomePorCachorro(Long id) {
+        CachorroResponseDTO cao = objectMapper.convertValue(repositoryCachorro.findById(id), CachorroResponseDTO.class);
+        return cao.getNome();
+    }
+
+    public String buscarTurmaPorCachorro(Long id){
+        CachorroResponseDTO cao = objectMapper.convertValue(repositoryCachorro.findById(id), CachorroResponseDTO.class);
+        return cao.getTurma();
     }
 
     public CachorroResponseDTO cadastrarCachorro(CachorroRequestDTO dto) {

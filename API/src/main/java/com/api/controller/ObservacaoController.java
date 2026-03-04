@@ -5,8 +5,6 @@ import com.api.dto.observacao.ObservacaoRequestDTO;
 import com.api.dto.observacao.ObservacaoResponseDTO;
 import com.api.service.CachorroService;
 import com.api.service.ObservacaoService;
-import com.api.service.Service;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
