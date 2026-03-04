@@ -6,6 +6,7 @@ import com.api.repository.RepositoryProfessor;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
 
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -36,5 +37,20 @@ public class ProfessorService {
     public ProfessorResponseDTO buscarProfessorPorId(Long id) {
         Optional<Professor> professor = repository.findById(id);
         return objectMapper.convertValue(professor.get(), ProfessorResponseDTO.class);
+    }
+
+    public String buscarImagemPorId(Long id) {
+        Professor professor = objectMapper.convertValue(repository.findById(id), Professor.class);
+        return professor.getImagem();
+    }
+
+    public String buscarNomePorId(Long id) {
+        Professor professor = objectMapper.convertValue(repository.findById(id), Professor.class);
+        return professor.getNome();
+    }
+
+    public Date buscarDataNascimentoProfessorPorId(Long id) {
+        Professor professor = objectMapper.convertValue(repository.findById(id), Professor.class);
+        return professor.getData_nascimento();
     }
 }

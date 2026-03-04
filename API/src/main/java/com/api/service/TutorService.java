@@ -7,6 +7,8 @@ import com.api.repository.RepositoryTutor;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
 
+import java.sql.Date;
+
 @Service
 public class TutorService {
     private final RepositoryTutor repository;
@@ -30,6 +32,16 @@ public class TutorService {
     public String buscarImagemPorIdTutor(Long idTutor) {
         Tutor tutor = objectMapper.convertValue(repository.findById(idTutor), Tutor.class);
         return tutor.getImagem();
+    }
+
+    public String buscarNomeTutorPorId(Long idTutor) {
+        Tutor tutor = objectMapper.convertValue(repository.findById(idTutor), Tutor.class);
+        return tutor.getNome();
+    }
+
+    public Date buscarDataNascimentoTutorPorId(Long idTutor) {
+        Tutor tutor = objectMapper.convertValue(repository.findById(idTutor), Tutor.class);
+        return tutor.getDataNascimento();
     }
 
     public TutorResponseDTO cadastrarTutor(TutorRequestDTO dto){

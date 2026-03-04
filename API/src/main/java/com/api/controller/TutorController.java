@@ -5,6 +5,8 @@ import com.api.dto.tutor.TutorResponseDTO;
 import com.api.service.TutorService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+
 @RestController
 @RequestMapping("/api/tutor")
 public class TutorController {
@@ -22,6 +24,16 @@ public class TutorController {
     @GetMapping("/buscarImagemPorId/{id}")
     public String buscarImagemPorIdTutor(@PathVariable Long id) {
         return service.buscarImagemPorIdTutor(id);
+    }
+
+    @GetMapping("/buscarNomeTutorPorId/{id}")
+    public String buscarNomeTutorPorId(@PathVariable Long id) {
+        return service.buscarNomeTutorPorId(id);
+    }
+
+    @GetMapping("/buscarDataNascimentoTutorPorId/{id}")
+    public Date buscarDataNascimentoTutorPorId(@PathVariable Long id) {
+        return service.buscarDataNascimentoTutorPorId(id);
     }
 
     @PostMapping("/cadastrar")
