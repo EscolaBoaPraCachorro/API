@@ -5,6 +5,8 @@ import com.api.dto.cachorro.CachorroResponseDTO;
 import com.api.service.CachorroService;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.List;
 
@@ -28,17 +30,17 @@ public class CachorroController {
 
     @GetMapping("/buscarTurma/{turma}")
     public CachorroResponseDTO buscarCaoPorTurma(@PathVariable String turma) {
-        return service.buscarCachorroPorTurma(turma);
+        return service.buscarCachorroPorTurma(URLDecoder.decode(turma, StandardCharsets.UTF_8));
     }
 
     @GetMapping("/buscarCaoPorTurma/{turma}")
     public List<CachorroResponseDTO> buscarTurma(@PathVariable String turma) {
-        return service.buscarTurma(turma);
+        return service.buscarTurma(URLDecoder.decode(turma, StandardCharsets.UTF_8));
     }
 
     @GetMapping("/buscarImagemPorCachorro/{id}")
     public String buscarImagemPorCachorro(@PathVariable Long id) {
-        return service.buscarImagemPorCachorro(id);
+        return service. buscarImagemPorCachorro(id);
     }
 
     @GetMapping("/buscarDataNascimentoPorCachorro/{id}")
