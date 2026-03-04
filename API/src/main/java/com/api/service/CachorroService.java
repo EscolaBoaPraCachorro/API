@@ -39,9 +39,8 @@ public class CachorroService {
         return objectMapper.convertValue(cao, CachorroResponseDTO.class);
     }
 
-    public String buscarTurma(String turma) {
-        CachorroResponseDTO cao = repositoryCachorro.findCachorroByTurma(turma);
-        return cao.getTurma();
+    public CachorroResponseDTO buscarTurma(String turma) {
+        return repositoryCachorro.findCachorroByTurma(turma);
     }
 
     public List<CachorroResponseDTO> buscarCachorroPorTurma(String turma) {

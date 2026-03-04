@@ -25,7 +25,7 @@ public class CachorroController {
     }
 
     @GetMapping("buscarTurma/{turma}")
-    public String buscarTurma(@PathVariable String turma) {
+    public CachorroResponseDTO buscarTurma(@PathVariable String turma) {
         return service.buscarTurma(turma);
     }
 
