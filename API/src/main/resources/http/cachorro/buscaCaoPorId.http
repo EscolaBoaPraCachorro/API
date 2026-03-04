@@ -1,3 +1,5 @@
 ### GET request to example server
+# @no-cookie-jar
 GET http://localhost:8080/api/cao/buscarCaoPorId/2
+Content-Type: application/json
 ###

@@ -21,6 +21,7 @@ public class Professor {
     private String cpf;
     private String rg;
     private String email;
+    private String imagem;
     private String disciplina;
 
     public Professor(
@@ -32,6 +33,7 @@ public class Professor {
             String cpf,
             String rg,
             String email,
+            String imagem,
             String disciplina
     ) {
         this.nome = nome;
@@ -42,6 +44,7 @@ public class Professor {
         this.cpf = cpf;
         this.rg = rg;
         this.email = email;
+        this.imagem = imagem;
         this.disciplina = disciplina;
     }
 
@@ -117,6 +120,14 @@ public class Professor {
         this.email = email;
     }
 
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
+    }
+
     public String getDisciplina() {
         return disciplina;
     }
@@ -137,6 +148,7 @@ public class Professor {
                 ", cpf='" + cpf + '\'' +
                 ", rg='" + rg + '\'' +
                 ", email='" + email + '\'' +
+                ", imagem='" + imagem + '\'' +
                 ", disciplina='" + disciplina + '\'' +
                 '}';
     }

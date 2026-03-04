@@ -1,56 +1,49 @@
 package com.api.model;
 
 import jakarta.persistence.*;
+import org.jspecify.annotations.Nullable;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 
-import java.util.Set;
+import java.util.Collection;
+import java.util.List;
 
-@Entity
-@Table(name = "users")
-public class User {
+
+@Entity(name = "users")
+public class User implements UserDetails {
     @Id
     private Long id;
     private String username;
     private String password;
     private Boolean enabled;
-    @ManyToMany(fetch = FetchType.EAGER)
-    private Set<Role> roles;
+    private UserRoles roles;
 
     public User() {}
 
-    public Long getId() {
-        return id;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        if (this.roles == UserRoles.ADMIN) {
+            return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        } else {
+            return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        }
     }
 
+    @Override
+    public @Nullable String getPassword() {
+        return this.password;
+    }
+
+    @Override
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Boolean getEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public Set<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    @Override
+    public boolean isEnabled() {
+        return this.enabled;
     }
 }

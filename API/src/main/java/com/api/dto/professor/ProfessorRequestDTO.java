@@ -11,6 +11,7 @@ public class ProfessorRequestDTO {
     private String cpf;
     private String rg;
     private String email;
+    private String imagem;
     private String disciplina;
 
     public String getNome() {
@@ -43,6 +44,10 @@ public class ProfessorRequestDTO {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getImagem() {
+        return imagem;
     }
 
     public String getDisciplina() {

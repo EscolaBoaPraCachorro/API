@@ -15,6 +15,7 @@ public class ProfessorResponseDTO {
     private String cpf;
     private String rg;
     private String email;
+    private String imagem;
     private String disciplina;
 
     public ProfessorResponseDTO() {}
@@ -29,6 +30,7 @@ public class ProfessorResponseDTO {
         this.cpf = professor.getCpf();
         this.rg = professor.getRg();
         this.email = professor.getEmail();
+        this.imagem = professor.getImagem();
         this.disciplina = professor.getDisciplina();
     }
 
@@ -66,6 +68,10 @@ public class ProfessorResponseDTO {
 
     public String getEmail() {
         return email;
+    }
+
+    public String getImagem() {
+        return imagem;
     }
 
     public String getDisciplina() {
