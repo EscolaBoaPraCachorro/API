@@ -2,6 +2,7 @@ package com.api.service;
 
 import com.api.dto.nota.NotaResponseDTO;
 import com.api.model.Notas;
+import com.api.model.Professor;
 import com.api.repository.RepositoryNotas;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
@@ -14,10 +15,16 @@ import java.util.List;
 @Service
 public class NotasService {
     private final RepositoryNotas repository;
+    private DisciplinaService disciplinaService;
     private final ObjectMapper objectMapper;
 
-    public NotasService(RepositoryNotas repository, ObjectMapper objectMapper) {
+    public NotasService(
+            RepositoryNotas repository,
+            DisciplinaService disciplinaService,
+            ObjectMapper objectMapper
+    ) {
         this.repository = repository;
+        this.disciplinaService = disciplinaService;
         this.objectMapper = objectMapper;
     }
 
@@ -36,24 +43,29 @@ public class NotasService {
         return repository.findByIdCachorroAndIdProfessor(idCachorro, idProfessor);
     }
 
-    public Integer buscarNotaDoPrimeiroSemestrePorDisciplina (Long idCachorro, Long idProfessor) {
-        return repository.findNotaByIdCachorroAndIdProfessorAndMonthLessThan(idCachorro, idProfessor);
+    public Integer buscarNotaDoPrimeiroSemestrePorDisciplina (Long idCachorro, String disciplina) {
+        Long idProf = disciplinaService.buscarIdProfessorPorDisciplina(disciplina);
+        return repository.findNotaByIdCachorroAndIdProfessorAndMonthLessThan(idCachorro, idProf);
     }
 
-    public Integer buscarNotaDoSegundoSemestrePorDisciplina (Long idCachorro, Long idProfessor) {
-        return repository.findNotaByIdCachorroAndIdProfessorAndMonthGreaterThan(idCachorro, idProfessor);
+    public Integer buscarNotaDoSegundoSemestrePorDisciplina (Long idCachorro, String disciplina) {
+        Long idProf = disciplinaService.buscarIdProfessorPorDisciplina(disciplina);
+        return repository.findNotaByIdCachorroAndIdProfessorAndMonthGreaterThan(idCachorro, idProf);
     }
 
-    public Integer calcularMedia(Long idCachorro, Long idProfessor) {
-        Integer nota1 = buscarNotaDoPrimeiroSemestrePorDisciplina(idCachorro, idProfessor);
-        Integer nota2 = buscarNotaDoSegundoSemestrePorDisciplina(idCachorro, idProfessor);
+    public Integer calcularMedia(Long idCachorro, String disciplina) {
+        Integer nota1 = buscarNotaDoPrimeiroSemestrePorDisciplina(idCachorro, disciplina);
+        Integer nota2 = buscarNotaDoSegundoSemestrePorDisciplina(idCachorro, disciplina);
         return (nota1 + nota2) / 2;
     }
 
-    public NotaResponseDTO lancarNotas(Long id_cachorro, Long id_professor, Integer nota) {
+    public NotaResponseDTO lancarNotas(Long id_cachorro, String disciplina, Integer nota) {
         LocalDate localDate = LocalDate.now();
         Date data_atual = Date.valueOf(localDate);
-        Notas notas = new Notas(id_cachorro, id_professor, nota, data_atual);
+
+        Long idProf = disciplinaService.buscarIdProfessorPorDisciplina(disciplina);
+
+        Notas notas = new Notas(id_cachorro, idProf, nota, data_atual);
         Notas notasEnviadas = repository.save(notas);
         return objectMapper.convertValue(notasEnviadas, NotaResponseDTO.class);
     }

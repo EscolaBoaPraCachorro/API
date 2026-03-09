@@ -32,24 +32,24 @@ public class NotaController {
         return notasService.buscarNotaPorIdCachorroEDisciplina(idCachorro, idProfessor);
     }
 
-    @GetMapping("/buscarNotaDoPrimeiroSemestre")
-    public Integer buscarNotaDoPrimeiroSemestre(@RequestBody NotaRequestDTO req) {
-        return notasService.buscarNotaDoPrimeiroSemestrePorDisciplina(req.getId_cachorro(), req.getId_professor());
+    @GetMapping("/buscarNotaDoPrimeiroSemestre/{disciplina}")
+    public Integer buscarNotaDoPrimeiroSemestre(@RequestBody NotaRequestDTO req, @PathVariable String disciplina) {
+        return notasService.buscarNotaDoPrimeiroSemestrePorDisciplina(req.getId_cachorro(), disciplina);
     }
 
-    @GetMapping("/buscarNotaDoSegundoSemestre")
-    public Integer buscarNotaDoSegundoSemestre(@RequestBody NotaRequestDTO req) {
-        return notasService.buscarNotaDoSegundoSemestrePorDisciplina(req.getId_cachorro(), req.getId_professor());
+    @GetMapping("/buscarNotaDoSegundoSemestre/{disciplina}")
+    public Integer buscarNotaDoSegundoSemestre(@RequestBody NotaRequestDTO req, @PathVariable String disciplina) {
+        return notasService.buscarNotaDoSegundoSemestrePorDisciplina(req.getId_cachorro(), disciplina);
     }
 
-    @GetMapping("/calcularMedia")
-    public Integer calcularMedia(@RequestBody NotaRequestDTO req) {
-        return notasService.calcularMedia(req.getId_cachorro(), req.getId_professor());
+    @GetMapping("/calcularMedia/{disciplina}")
+    public Integer calcularMedia(@RequestBody NotaRequestDTO req, @PathVariable String disciplina) {
+        return notasService.calcularMedia(req.getId_cachorro(), disciplina);
     }
 
-    @PostMapping("/inserirNota")
-    public String lancarNotas(@RequestBody NotaRequestDTO req) {
-        NotaResponseDTO res = notasService.lancarNotas(req.getId_cachorro(), req.getId_professor(), req.getNota());
+    @PostMapping("/inserirNota/{disciplina}")
+    public String lancarNotas(@RequestBody NotaRequestDTO req, @PathVariable String disciplina) {
+        NotaResponseDTO res = notasService.lancarNotas(req.getId_cachorro(), disciplina, req.getNota());
         CachorroResponseDTO cao = cachorroService.buscarCaoPorId(res.getId_cachorro());
         return "As notas, do cachorro" + cao.getNome() + ", foram lançadas, pelo professor " + res.getId_professor() + ", com sucesso!";
     }

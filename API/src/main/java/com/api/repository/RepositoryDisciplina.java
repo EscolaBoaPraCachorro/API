@@ -8,5 +8,5 @@ import org.springframework.data.repository.query.Param;
 public interface RepositoryDisciplina extends JpaRepository<Disciplina, Long> {
 
     @Query("SELECT d.idProfessor FROM Disciplina d WHERE d.nome= :nome")
-    Long findIdProfessorByNome(@Param("nome") Long nome);
+    Long findIdProfessorByNome(@Param("nome") String nome);
 }

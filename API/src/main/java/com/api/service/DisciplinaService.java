@@ -12,7 +12,7 @@ public class DisciplinaService {
         this.repository = repositoryDisciplina;
     }
 
-    public Long buscarIdProfessorPorDisciplina(Long disciplina) {
+    public Long buscarIdProfessorPorDisciplina(String disciplina) {
         return repository.findIdProfessorByNome(disciplina);
     }
 }

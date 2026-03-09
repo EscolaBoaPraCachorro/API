@@ -16,7 +16,7 @@ public class DisciplinaController {
     }
 
     @GetMapping("/buscarIdProfessorPorDisciplina/{disciplina}")
-    public Long buscarIdProfessorPorDisciplina(@PathVariable Long disciplina) {
+    public Long buscarIdProfessorPorDisciplina(@PathVariable String disciplina) {
         return service.buscarIdProfessorPorDisciplina(disciplina);
     }
 }
