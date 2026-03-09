@@ -43,7 +43,13 @@ public class CachorroService {
     }
 
     public List<CachorroResponseDTO> buscarTurma(String turma) {
-        return repositoryCachorro.findByTurma(turma);
+        List<Cachorro> cao = repositoryCachorro.findByTurma(turma);
+        List<CachorroResponseDTO> dto = new ArrayList<>();
+
+        for (Cachorro cachorro : cao) {
+            dto.add(objectMapper.convertValue(cachorro, CachorroResponseDTO.class));
+        }
+        return dto;
     }
 
     public String buscarImagemPorCachorro(Long id) {

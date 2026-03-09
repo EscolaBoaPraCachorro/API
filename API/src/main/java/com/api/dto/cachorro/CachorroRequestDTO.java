@@ -12,7 +12,7 @@ public class CachorroRequestDTO {
     @Schema(description = "Data de nascimeno do cachorro", example = "2016-07-08")
     private Date data_nascimento;
     @Schema(description = "ID do tutor", example = "1")
-    private Integer tutor_id;
+    private Long tutor_id;
     @Schema(description = "Turma em que o cão está estudando", example = "1E")
     private String turma;
     @Schema(description = "Data de qunado o cão foi cadastrado no sistema", example = "2026-01-01")
@@ -52,11 +52,11 @@ public class CachorroRequestDTO {
         this.data_nascimento = data_nascimento;
     }
 
-    public Integer getTutor_id() {
+    public Long getTutor_id() {
         return tutor_id;
     }
 
-    public void setTutor_id(Integer tutor_id) {
+    public void setTutor_id(Long tutor_id) {
         this.tutor_id = tutor_id;
     }
 

@@ -9,5 +9,5 @@ import java.util.List;
 public interface RepositoryCachorro extends JpaRepository<Cachorro, Long> {
     CachorroResponseDTO findCachorroByTurma(String turma);
 
-    List<CachorroResponseDTO> findByTurma(String turma);
+    List<Cachorro> findByTurma(String turma);
 }

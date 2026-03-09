@@ -1,0 +1,9 @@
+### GET request to example server
+PATCH http://localhost:8080/api/cao/atualizarMatricula/2
+Content-Type: application/json
+
+{
+  "ativo": true
+}
+
+###
