@@ -71,4 +71,10 @@ public class CachorroController {
         CachorroResponseDTO res = service.atualizarAtivo(id, req.getAtivo());
         return "A matricula do cachorro, com ID: " + res.getId() + ", foi atualizado com sucesso!";
     }
+
+    @PatchMapping("/atualizarImagem/{id}")
+    public String atualizarImagem(@RequestBody CachorroRequestDTO req, @PathVariable Long id) {
+        CachorroResponseDTO res = service.atualizarImagem(id, req.getImagem());
+        return "A imagem do cachoroo, com ID: " + res.getId() + ", foi atualizada com sucesso!";
+    }
 }

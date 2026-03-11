@@ -1,0 +1,9 @@
+### GET request to example server
+PATCH http://localhost:8080/api/cao/atualizarImagem/1
+Content-Type: application/json
+
+{
+  "imagem": "https://imagem123.com"
+}
+
+###

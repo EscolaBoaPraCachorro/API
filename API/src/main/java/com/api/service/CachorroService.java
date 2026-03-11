@@ -84,4 +84,11 @@ public class CachorroService {
         Cachorro cachorroAtualizado = repositoryCachorro.save(cachorroExistente);
         return objectMapper.convertValue(cachorroAtualizado, CachorroResponseDTO.class);
     }
+
+    public CachorroResponseDTO atualizarImagem(Long id, String imagem) {
+        Cachorro cachorroExistente = objectMapper.convertValue(buscarCaoPorId(id), Cachorro.class);
+        cachorroExistente.setImagem(imagem);
+        Cachorro cachorroAtualizado = repositoryCachorro.save(cachorroExistente);
+        return objectMapper.convertValue(cachorroAtualizado, CachorroResponseDTO.class);
+    }
 }
