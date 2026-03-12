@@ -42,6 +42,7 @@ public class TutorController {
         return service.cadastrarTutor(dto);
     }
 
+
     @PatchMapping("/atualizarDescricao/{id}")
     public String atualizarDescricao(@RequestBody TutorRequestDTO req, @PathVariable Long id) {
         TutorResponseDTO res = service.atualizarDescricao(id, req.getDescricao());
