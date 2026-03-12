@@ -7,7 +7,7 @@ public class NotaRequestDTO {
     private Long idCachorro;
     private Long idProfessor;
     private Integer nota;
-    private Date data_publicacao;
+    private Date dataPublicacao;
     private Integer nova_nota;
 
     public Long getId_cachorro() {
@@ -34,12 +34,12 @@ public class NotaRequestDTO {
         this.nota = nota;
     }
 
-    public Date getData_publicacao() {
-        return data_publicacao;
+    public Date getDataPublicacao() {
+        return dataPublicacao;
     }
 
-    public void setData_publicacao(Date data_publicacao) {
-        this.data_publicacao = data_publicacao;
+    public void setDataPublicacao(Date dataPublicacao) {
+        this.dataPublicacao = dataPublicacao;
     }
 
     public Integer getNova_nota() {

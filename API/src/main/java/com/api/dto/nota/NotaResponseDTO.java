@@ -9,14 +9,14 @@ public class NotaResponseDTO {
     private Long idCachorro;
     private Long idProfessor;
     private Integer nota;
-    private Date data_publicacao;
+    private Date dataPublicacao;
 
     public NotaResponseDTO(Notas notas) {
         this.id = notas.getId();
         this.idCachorro = notas.getIdCachorro();
         this.idProfessor = notas.getIdProfessor();
         this.nota = notas.getNota();
-        this.data_publicacao = notas.getDataPublicacao();
+        this.dataPublicacao = notas.getDataPublicacao();
     }
 
     public NotaResponseDTO() {}
@@ -53,11 +53,11 @@ public class NotaResponseDTO {
         this.nota = nota;
     }
 
-    public Date getData_publicacao() {
-        return data_publicacao;
+    public Date getDataPublicacao() {
+        return dataPublicacao;
     }
 
-    public void setData_publicacao(Date data_publicacao) {
-        this.data_publicacao = data_publicacao;
+    public void setDataPublicacao(Date dataPublicacao) {
+        this.dataPublicacao = dataPublicacao;
     }
 }
