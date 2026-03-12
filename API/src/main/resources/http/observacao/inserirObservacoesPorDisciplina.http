@@ -1,0 +1,11 @@
+### GET request to example server
+POST http://localhost:8080/api/observacao/inserirObservacoesPorDisciplina/autocontrole
+Content-Type: application/json
+
+{
+  "id_cachorro": 26,
+  "descricao": "Ela tem um bom autocontrole, sem críticas"
+}
+
+
+###

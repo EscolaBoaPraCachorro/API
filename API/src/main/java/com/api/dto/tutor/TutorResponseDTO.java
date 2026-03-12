@@ -33,6 +33,10 @@ public class TutorResponseDTO {
         this.imagem = tutor.getImagem();
     }
 
+    public Long getId() {
+        return id;
+    }
+
     public String getNome() {
         return nome;
     }

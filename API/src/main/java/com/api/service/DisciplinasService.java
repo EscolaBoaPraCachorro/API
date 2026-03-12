@@ -1,14 +1,13 @@
 package com.api.service;
 
-import com.api.dto.disciplina.DisciplinaResponseDTO;
-import com.api.repository.RepositoryDisciplina;
+import com.api.repository.RepositoryDisciplinas;
 import org.springframework.stereotype.Service;
 
 @Service
-public class DisciplinaService {
-    private final RepositoryDisciplina repository;
+public class DisciplinasService {
+    private final RepositoryDisciplinas repository;
 
-    public DisciplinaService(RepositoryDisciplina repositoryDisciplina) {
+    public DisciplinasService(RepositoryDisciplinas repositoryDisciplina) {
         this.repository = repositoryDisciplina;
     }
 

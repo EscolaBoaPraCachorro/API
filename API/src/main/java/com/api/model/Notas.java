@@ -9,12 +9,9 @@ public class Notas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "id_cachorro")
     private Long idCachorro;
-    @Column(name = "id_professor")
     private Long idProfessor;
     private Integer nota;
-    @Column(name = "data_publicacao")
     private Date dataPublicacao;
 
     public Notas(Long idCachorro, Long idProfessor, Integer nota, Date data_publicacao) {

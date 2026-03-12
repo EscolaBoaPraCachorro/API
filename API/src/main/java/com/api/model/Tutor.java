@@ -22,6 +22,7 @@ public class Tutor {
     private String rg;
     private String email;
     private String imagem;
+    private String descricao;
 
     public Tutor(
             String nome,
@@ -33,7 +34,8 @@ public class Tutor {
             String cpf,
             String rg,
             String email,
-            String imagem
+            String imagem,
+            String descricao
     ) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
@@ -45,6 +47,7 @@ public class Tutor {
         this.rg = rg;
         this.email = email;
         this.imagem = imagem;
+        this.descricao = descricao;
     }
 
     public Tutor() {}
@@ -111,6 +114,14 @@ public class Tutor {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     @Override

@@ -14,10 +14,16 @@ import java.util.List;
 @Service
 public class ObservacaoService {
     private final RepositoryObservacao repository;
+    private final DisciplinasService disciplinasService;
     private final ObjectMapper objectMapper;
 
-    public ObservacaoService(RepositoryObservacao repository, ObjectMapper objectMapper) {
+    public ObservacaoService(
+            RepositoryObservacao repository,
+            DisciplinasService disciplinasService,
+            ObjectMapper objectMapper
+    ) {
         this.repository = repository;
+        this.disciplinasService = disciplinasService;
         this.objectMapper = objectMapper;
     }
 
@@ -46,6 +52,18 @@ public class ObservacaoService {
     public ObservacaoResponseDTO lancarObservacao(Long id_cachorro, Long id_professor, String descricao) {
         LocalDate localDate = LocalDate.now();
         Date data_atual = Date.valueOf(localDate);
+        Observacao observacao = new Observacao(id_cachorro, id_professor, descricao, data_atual);
+
+        Observacao resposta = repository.save(observacao);
+        return objectMapper.convertValue(resposta, ObservacaoResponseDTO.class);
+    }
+
+    public ObservacaoResponseDTO lancarObservacaoPorDisciplina(Long id_cachorro, String disciplina, String descricao) {
+        LocalDate localDate = LocalDate.now();
+        Date data_atual = Date.valueOf(localDate);
+
+        Long id_professor = disciplinasService.buscarIdProfessorPorDisciplina(disciplina);
+
         Observacao observacao = new Observacao(id_cachorro, id_professor, descricao, data_atual);
 
         Observacao resposta = repository.save(observacao);

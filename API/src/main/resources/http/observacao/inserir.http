@@ -3,6 +3,8 @@ POST http://localhost:8080/api/observacao/inserirObservacoes
 Content-Type: application/json
 
 {
-
+  "id_cachorro": 2,
+  "id_professor": 3,
+  "descricao": "O auto controle do doguinho Orelha é excepcional"
 }
 ###

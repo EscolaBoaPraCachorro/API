@@ -11,7 +11,9 @@ import java.util.List;
 public interface RepositoryNotas extends JpaRepository<Notas, Long> {
     List<Notas> findByIdCachorro(Long id);
 
-    List<NotaResponseDTO> findByIdCachorroAndIdProfessor(Long idCachorro, Long idProfessor);
+    List<Notas> findByIdCachorroAndIdProfessor(Long idCachorro, Long idProfessor);
+
+    List<Notas> findByIdProfessor(Long idProfessor);
 
     Notas findByIdCachorroAndIdProfessorAndNota(Long idCachorro, Long idProfessor, Integer nota);
 

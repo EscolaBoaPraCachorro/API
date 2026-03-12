@@ -19,6 +19,8 @@ public class NotaResponseDTO {
         this.data_publicacao = notas.getDataPublicacao();
     }
 
+    public NotaResponseDTO() {}
+
     public Long getId() {
         return id;
     }

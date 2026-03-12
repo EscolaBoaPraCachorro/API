@@ -14,6 +14,7 @@ public class TutorRequestDTO {
     private String rg;
     private String email;
     private String imagem;
+    private String descricao;
 
     public String getNome() {
         return nome;
@@ -54,4 +55,5 @@ public class TutorRequestDTO {
     public String getImagem() {
         return imagem;
     }
+    public String getDescricao() {return descricao;}
 }

@@ -1,16 +1,16 @@
 package com.api.dto.disciplina;
 
-import com.api.model.Disciplina;
+import com.api.model.Disciplinas;
 
-public class DisciplinaResponseDTO {
+public class DisciplinasResponseDTO {
     private Long id;
     private String nome;
     private Long idProfessor;
 
-    public DisciplinaResponseDTO(Disciplina disciplina) {
-        this.id = disciplina.getId();
-        this.nome = disciplina.getNome();
-        this.idProfessor = disciplina.getIdProfessor();
+    public DisciplinasResponseDTO(Disciplinas disciplinas) {
+        this.id = disciplinas.getId();
+        this.nome = disciplinas.getNome();
+        this.idProfessor = disciplinas.getIdProfessor();
     }
 
     public Long getId() {

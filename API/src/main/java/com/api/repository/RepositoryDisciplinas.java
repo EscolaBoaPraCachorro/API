@@ -1,12 +1,12 @@
 package com.api.repository;
 
-import com.api.model.Disciplina;
+import com.api.model.Disciplinas;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-public interface RepositoryDisciplina extends JpaRepository<Disciplina, Long> {
+public interface RepositoryDisciplinas extends JpaRepository<Disciplinas, Long> {
 
-    @Query("SELECT d.idProfessor FROM Disciplina d WHERE d.nome= :nome")
+    @Query("SELECT d.idProfessor FROM Disciplinas d WHERE d.nome= :nome")
     Long findIdProfessorByNome(@Param("nome") String nome);
 }

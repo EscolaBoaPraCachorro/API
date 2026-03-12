@@ -1,0 +1,8 @@
+### GET request to example server
+PATCH http://localhost:8080/api/tutor/atualizarDescricao/19
+Content-Type: application/json
+
+{
+  "descricao": "Olá! Eu sou o Mariana Souza, tenho 40 anos e eu sou o dono da Bulldog Francês: Max. Se quiser entrar em contato, me chame nesse número: (11)99123-4567"
+}
+###

@@ -2,7 +2,6 @@ package com.api.service;
 
 import com.api.dto.nota.NotaResponseDTO;
 import com.api.model.Notas;
-import com.api.model.Professor;
 import com.api.repository.RepositoryNotas;
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
@@ -15,12 +14,12 @@ import java.util.List;
 @Service
 public class NotasService {
     private final RepositoryNotas repository;
-    private DisciplinaService disciplinaService;
+    private final DisciplinasService disciplinaService;
     private final ObjectMapper objectMapper;
 
     public NotasService(
             RepositoryNotas repository,
-            DisciplinaService disciplinaService,
+            DisciplinasService disciplinaService,
             ObjectMapper objectMapper
     ) {
         this.repository = repository;
@@ -39,8 +38,27 @@ public class NotasService {
         return listNotaDTO;
     }
 
-    public List<NotaResponseDTO> buscarNotaPorIdCachorroEDisciplina(Long idCachorro, Long idProfessor) {
-        return repository.findByIdCachorroAndIdProfessor(idCachorro, idProfessor);
+    public List<NotaResponseDTO> buscarNotaPorIdCaoEIdProfessor(Long idCachorro, Long idProfessor) {
+        List<Notas> notas = repository.findByIdCachorroAndIdProfessor(idCachorro, idProfessor);
+        List<NotaResponseDTO> listNotaDTO = new ArrayList<>();
+
+        for (Notas nota : notas) {
+            listNotaDTO.add(objectMapper.convertValue(nota, NotaResponseDTO.class));
+        }
+
+        return listNotaDTO;
+    }
+
+    public List<NotaResponseDTO> buscarNotasPorDisciplina(String disciplina) {
+        Long idProfessor = disciplinaService.buscarIdProfessorPorDisciplina(disciplina);
+        List<Notas> notas = repository.findByIdProfessor(idProfessor);
+        List<NotaResponseDTO> listNotaDTO = new ArrayList<>();
+
+        for (Notas nota : notas) {
+            listNotaDTO.add(objectMapper.convertValue(nota, NotaResponseDTO.class));
+        }
+
+        return listNotaDTO;
     }
 
     public Integer buscarNotaDoPrimeiroSemestrePorDisciplina (Long idCachorro, String disciplina) {

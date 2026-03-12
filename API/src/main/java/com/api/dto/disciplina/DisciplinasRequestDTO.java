@@ -1,6 +1,6 @@
 package com.api.dto.disciplina;
 
-public class DisciplinaRequestDTO {
+public class DisciplinasRequestDTO {
     private String nome;
     private Long idProfessor;
 

@@ -1,24 +1,21 @@
 package com.api.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
-public class Disciplina {
+public class Disciplinas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private Long idProfessor;
 
-    public Disciplina(String nome, Long idProfessor) {
+    public Disciplinas(String nome, Long idProfessor) {
         this.nome = nome;
         this.idProfessor = idProfessor;
     }
 
-    public Disciplina() {}
+    public Disciplinas() {}
 
     public Long getId() {
         return id;

@@ -1,7 +1,9 @@
 package com.api.service;
 
+import com.api.dto.cachorro.CachorroResponseDTO;
 import com.api.dto.tutor.TutorRequestDTO;
 import com.api.dto.tutor.TutorResponseDTO;
+import com.api.model.Cachorro;
 import com.api.model.Tutor;
 import com.api.repository.RepositoryTutor;
 import org.springframework.stereotype.Service;
@@ -48,5 +50,12 @@ public class TutorService {
         Tutor tutor = objectMapper.convertValue(dto, Tutor.class);
         Tutor cadastrado = repository.save(tutor);
         return objectMapper.convertValue(cadastrado, TutorResponseDTO.class);
+    }
+
+    public TutorResponseDTO atualizarDescricao(Long id, String descricao) {
+        Tutor tutorExistente = objectMapper.convertValue(repository.findById(id), Tutor.class);
+        tutorExistente.setDescricao(descricao);
+        Tutor tutorAtualizado = repository.save(tutorExistente);
+        return objectMapper.convertValue(tutorAtualizado, TutorResponseDTO.class);
     }
 }

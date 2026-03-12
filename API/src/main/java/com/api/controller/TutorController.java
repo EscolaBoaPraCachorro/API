@@ -1,5 +1,6 @@
 package com.api.controller;
 
+import com.api.dto.cachorro.CachorroResponseDTO;
 import com.api.dto.tutor.TutorRequestDTO;
 import com.api.dto.tutor.TutorResponseDTO;
 import com.api.service.TutorService;
@@ -39,5 +40,11 @@ public class TutorController {
     @PostMapping("/cadastrar")
     public TutorResponseDTO cadastrarTutor(@RequestBody TutorRequestDTO dto) {
         return service.cadastrarTutor(dto);
+    }
+
+    @PatchMapping("/atualizarDescricao/{id}")
+    public String atualizarDescricao(@RequestBody TutorRequestDTO req, @PathVariable Long id) {
+        TutorResponseDTO res = service.atualizarDescricao(id, req.getDescricao());
+        return "A imagem do cachoroo, com ID: " + res.getId() + ", foi atualizada com sucesso!";
     }
 }

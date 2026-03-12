@@ -1,6 +1,6 @@
 package com.api.controller;
 
-import com.api.service.DisciplinaService;
+import com.api.service.DisciplinasService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/disciplina")
-public class DisciplinaController {
-    private final DisciplinaService service;
+public class DisciplinasController {
+    private final DisciplinasService service;
 
-    public DisciplinaController(DisciplinaService disciplinaService) {
+    public DisciplinasController(DisciplinasService disciplinaService) {
         this.service = disciplinaService;
     }
 

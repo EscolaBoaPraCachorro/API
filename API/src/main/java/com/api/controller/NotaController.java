@@ -26,10 +26,15 @@ public class NotaController {
     }
 
     @GetMapping("/buscarNotaPorIdCachorro/{idCachorro}/Disciplina/{idProfessor}")
-    public List<NotaResponseDTO> buscarNotaPorIdCaoEDisciplina(
+    public List<NotaResponseDTO> buscarNotaPorIdCaoEIdProfessor(
             @PathVariable Long idCachorro, @PathVariable Long idProfessor
     ) {
-        return notasService.buscarNotaPorIdCachorroEDisciplina(idCachorro, idProfessor);
+        return notasService.buscarNotaPorIdCaoEIdProfessor(idCachorro, idProfessor);
+    }
+
+    @GetMapping("/buscarNotaPorDisciplina/{disciplina}")
+    public List<NotaResponseDTO> buscarNotaPorIdCaoEDisciplina(@PathVariable String disciplina) {
+        return notasService.buscarNotasPorDisciplina(disciplina);
     }
 
     @GetMapping("/buscarNotaDoPrimeiroSemestre/{disciplina}")

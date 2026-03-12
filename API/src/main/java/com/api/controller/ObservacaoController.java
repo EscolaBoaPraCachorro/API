@@ -38,4 +38,11 @@ public class ObservacaoController {
         CachorroResponseDTO cao = cachorroService.buscarCaoPorId(res.getId_cachorro());
         return "As observações, para o cão " + cao.getNome() + ", foram enviadas com sucesso com o Id: " + res.getId();
     }
+
+    @PostMapping("/inserirObservacoesPorDisciplina/{disciplina}")
+    public String enviarObservacoesPorDisciplina(@RequestBody ObservacaoRequestDTO req, @PathVariable String disciplina) {
+        ObservacaoResponseDTO res = observacaoService.lancarObservacaoPorDisciplina(req.getId_cachorro(), disciplina, req.getDescricao());
+        CachorroResponseDTO cao = cachorroService.buscarCaoPorId(res.getId_cachorro());
+        return "As observações, para o cão " + cao.getNome() + ", foram enviadas com sucesso com o Id: " + res.getId();
+    }
 }
