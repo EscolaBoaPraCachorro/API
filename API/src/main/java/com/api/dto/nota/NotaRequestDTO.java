@@ -4,26 +4,26 @@ import java.util.Date;
 
 public class NotaRequestDTO {
 
-    private Long id_cachorro;
-    private Long id_professor;
+    private Long idCachorro;
+    private Long idProfessor;
     private Integer nota;
     private Date data_publicacao;
     private Integer nova_nota;
 
     public Long getId_cachorro() {
-        return id_cachorro;
+        return idCachorro;
     }
 
     public void setId_cachorro(Long id_cachorro) {
-        this.id_cachorro = id_cachorro;
+        this.idCachorro = id_cachorro;
     }
 
     public Long getId_professor() {
-        return id_professor;
+        return idProfessor;
     }
 
     public void setId_professor(Long id_professor) {
-        this.id_professor = id_professor;
+        this.idProfessor = id_professor;
     }
 
     public Integer getNota() {
