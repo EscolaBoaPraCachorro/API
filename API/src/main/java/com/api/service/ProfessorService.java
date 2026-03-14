@@ -1,9 +1,12 @@
 package com.api.service;
 
+import com.api.dto.professor.ProfessorRequestDTO;
 import com.api.dto.professor.ProfessorResponseDTO;
 import com.api.model.Professor;
 import com.api.repository.RepositoryProfessor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import tools.jackson.databind.ObjectMapper;
 
 import java.util.Date;
@@ -34,23 +37,34 @@ public class ProfessorService {
         return professorResponseDTO;
     }
 
-    public ProfessorResponseDTO buscarProfessorPorId(Long id) {
+    public ProfessorResponseDTO buscarProfessorPorId(@PathVariable Long id) {
         Optional<Professor> professor = repository.findById(id);
         return objectMapper.convertValue(professor.get(), ProfessorResponseDTO.class);
     }
 
-    public String buscarImagemPorId(Long id) {
+    public String buscarImagemPorId(@PathVariable Long id) {
         Professor professor = objectMapper.convertValue(repository.findById(id), Professor.class);
         return professor.getImagem();
     }
 
-    public String buscarNomePorId(Long id) {
+    public String buscarNomePorId(@PathVariable Long id) {
         Professor professor = objectMapper.convertValue(repository.findById(id), Professor.class);
         return professor.getNome();
     }
 
-    public Date buscarDataNascimentoProfessorPorId(Long id) {
+    public Date buscarDataNascimentoProfessorPorId(@PathVariable Long id) {
         Professor professor = objectMapper.convertValue(repository.findById(id), Professor.class);
         return professor.getData_nascimento();
+    }
+
+    public ProfessorResponseDTO inserirProfessor(@RequestBody ProfessorRequestDTO req){
+        Professor inserido = repository.save(objectMapper.convertValue(req, Professor.class));
+        return objectMapper.convertValue(inserido, ProfessorResponseDTO.class);
+    }
+
+    public ProfessorResponseDTO deletarProfessor(@PathVariable Long id){
+        Professor professor = repository.findById(id).orElse(null);
+        repository.delete(professor);
+        return objectMapper.convertValue(professor, ProfessorResponseDTO.class);
     }
 }

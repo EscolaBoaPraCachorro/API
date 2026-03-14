@@ -1,11 +1,10 @@
 package com.api.controller;
 
+import com.api.dto.cachorro.CachorroResponseDTO;
+import com.api.dto.professor.ProfessorRequestDTO;
 import com.api.dto.professor.ProfessorResponseDTO;
 import com.api.service.ProfessorService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.List;
@@ -42,5 +41,17 @@ public class ProfessorController {
     @GetMapping("/buscarDataNascimentoProfessorPorId/{id}")
     public Date buscarDataNascimentoProfessorPorId(@PathVariable Long id) {
         return professorService.buscarDataNascimentoProfessorPorId(id);
+    }
+
+    @PostMapping("/inserir")
+    public String inserirProfessor(@RequestBody ProfessorRequestDTO req) {
+        ProfessorResponseDTO res = professorService.inserirProfessor(req);
+        return "O professor " + res.getNome() + " foi inserido com sucesso!";
+    }
+
+    @DeleteMapping("/deletar/{id}")
+    public String deletar(@PathVariable Long id) {
+        ProfessorResponseDTO res = professorService.deletarProfessor(id);
+        return "O professor " + res.getNome() + " foi deletado!";
     }
 }
