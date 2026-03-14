@@ -36,8 +36,8 @@ public class CachorroResponseDTO {
     private Boolean aceito;
     @Schema(description = "Uma foto do cão", example = "https://imagem.com")
     private String imagem;
-    @Schema(description = "A alergia do cão ou não", example = "Nenhuma")
-    private String alergia;
+    @Schema(description = "A alergias do cão ou não", example = "Nenhuma")
+    private String alergias;
 
     public CachorroResponseDTO(Cachorro cao) {
         this.id = cao.getId();
@@ -112,8 +112,8 @@ public class CachorroResponseDTO {
         return imagem;
     }
 
-    public String getAlergia() {
-        return alergia;
+    public String getAlergias() {
+        return alergias;
     }
 
     @Override
@@ -133,7 +133,7 @@ public class CachorroResponseDTO {
                 ", sin_patinhas='" + sin_patinhas + '\'' +
                 ", aceito=" + aceito +
                 ", imagem='" + imagem + '\'' +
-                ", alergia='" + alergia + '\'' +
+                ", alergias='" + alergias + '\'' +
                 '}';
     }
 }

@@ -16,7 +16,7 @@ Content-Type: application/json
   "sin_patinhas": "sim",
   "aceito": true,
   "imagem": "https://imagem.com",
-  "alergia": "Nenhuma"
+  "alergias": "Nenhuma"
 }
 
 ###

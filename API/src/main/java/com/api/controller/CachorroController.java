@@ -58,12 +58,16 @@ public class CachorroController {
         return service.buscarTurmaPorCachorro(id);
     }
 
-
-
     @PostMapping("/inserir")
     public String inserir(@RequestBody CachorroRequestDTO req) {
         CachorroResponseDTO res = service.cadastrarCachorro(req);
         return "O cachorro " + res.getNome() + ", foi cadastrado com sucesso! ID: " + res.getId();
+    }
+
+    @PutMapping("/atualizar/{id}")
+    public String atualizar(@PathVariable Long id, @RequestBody CachorroRequestDTO req) {
+        CachorroResponseDTO res = service.atualizarCachorro(id, req);
+        return "O cachorro " + res.getNome() + ", foi modificado com sucesso! ID: " + res.getId();
     }
 
     @PatchMapping("/atualizarMatricula/{id}")
@@ -76,5 +80,11 @@ public class CachorroController {
     public String atualizarImagem(@RequestBody CachorroRequestDTO req, @PathVariable Long id) {
         CachorroResponseDTO res = service.atualizarImagem(id, req.getImagem());
         return "A imagem do cachoroo, com ID: " + res.getId() + ", foi atualizada com sucesso!";
+    }
+
+    @DeleteMapping("/deletar/{id}")
+    public String deletar(@PathVariable Long id) {
+        CachorroResponseDTO res = service.deletarCachorro(id);
+        return "O cachorro " + res.getNome() + " foi deletado!";
     }
 }

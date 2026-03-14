@@ -9,6 +9,7 @@ public class NotaRequestDTO {
     private Integer nota;
     private Date dataPublicacao;
     private Integer nova_nota;
+    private Integer semestre;
 
     public Long getId_cachorro() {
         return idCachorro;
@@ -48,5 +49,9 @@ public class NotaRequestDTO {
 
     public void setNova_nota(Integer nova_nota) {
         this.nova_nota = nova_nota;
+    }
+
+    public Integer getSemestre() {
+        return semestre;
     }
 }

@@ -9,16 +9,21 @@ public class Notas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "id_cachorro", nullable = false)
     private Long idCachorro;
+    @Column(name = "id_professor", nullable = false)
     private Long idProfessor;
     private Integer nota;
+    @Column(name = "data_publicacao", nullable = false)
     private Date dataPublicacao;
+    private Integer semestre;
 
-    public Notas(Long idCachorro, Long idProfessor, Integer nota, Date data_publicacao) {
+    public Notas(Long idCachorro, Long idProfessor, Integer nota, Date data_publicacao, Integer semestre) {
         this.idCachorro = idCachorro;
         this.idProfessor = idProfessor;
         this.nota = nota;
         this.dataPublicacao = data_publicacao;
+        this.semestre = semestre;
     }
 
     public Notas() {}
@@ -47,6 +52,14 @@ public class Notas {
         return dataPublicacao;
     }
 
+    public Integer getSemestre() {
+        return semestre;
+    }
+
+    public void setSemestre(Integer semestre) {
+        this.semestre = semestre;
+    }
+
     @Override
     public String toString() {
         return "Notas{" +
@@ -55,6 +68,7 @@ public class Notas {
                 ", idProfessor=" + idProfessor +
                 ", nota=" + nota +
                 ", dataPublicacao=" + dataPublicacao +
+                ", semestre=" + semestre +
                 '}';
     }
 }

@@ -10,6 +10,7 @@ public class NotaResponseDTO {
     private Long idProfessor;
     private Integer nota;
     private Date dataPublicacao;
+    public Integer semestre;
 
     public NotaResponseDTO(Notas notas) {
         this.id = notas.getId();
@@ -17,6 +18,7 @@ public class NotaResponseDTO {
         this.idProfessor = notas.getIdProfessor();
         this.nota = notas.getNota();
         this.dataPublicacao = notas.getDataPublicacao();
+        this.semestre = notas.getSemestre();
     }
 
     public NotaResponseDTO() {}
@@ -59,5 +61,9 @@ public class NotaResponseDTO {
 
     public void setDataPublicacao(Date dataPublicacao) {
         this.dataPublicacao = dataPublicacao;
+    }
+
+    public Integer getSemestre() {
+        return semestre;
     }
 }

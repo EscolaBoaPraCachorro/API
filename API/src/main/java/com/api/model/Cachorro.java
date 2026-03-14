@@ -26,6 +26,7 @@ public class Cachorro {
     private Boolean aceito;
     private String imagem;
     private String alergias;
+    private String situacao;
 
     public Cachorro(
             Long id,
@@ -42,7 +43,8 @@ public class Cachorro {
             String sin_patinhas,
             Boolean aceito,
             String imagem,
-            String alergia
+            String alergia,
+            String situacao
     ) {
         this.id = id;
         this.nome = nome;
@@ -59,6 +61,7 @@ public class Cachorro {
         this.aceito = aceito;
         this.imagem = imagem;
         this.alergias = alergia;
+        this.situacao = situacao;
     }
 
     public Cachorro() {}
@@ -167,6 +170,14 @@ public class Cachorro {
         this.alergias = alergia;
     }
 
+    public String getSituacao() {
+        return situacao;
+    }
+
+    public void setSituacao(String situacao) {
+        this.situacao = situacao;
+    }
+
     @Override
     public String toString() {
         return "Cachorro{" +
@@ -185,6 +196,7 @@ public class Cachorro {
                 ", aceito=" + aceito +
                 ", imagem='" + imagem + '\'' +
                 ", alergia='" + alergias + '\'' +
+                ", situacao='" + situacao + '\'' +
                 '}';
     }
 }

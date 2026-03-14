@@ -20,7 +20,7 @@ public class NotaController {
         this.cachorroService = cachorroService;
     }
 
-    @GetMapping("/buscarNotaPorIdCachorro/{id}")
+    @GetMapping("/buscarNotaPorIdCao/{id}")
     public List<NotaResponseDTO> buscarNotaPorIdCao(@PathVariable Long id) {
         return notasService.buscarNotaPorIdCachorro(id);
     }
@@ -54,7 +54,7 @@ public class NotaController {
 
     @PostMapping("/inserirNota/{disciplina}")
     public String lancarNotas(@RequestBody NotaRequestDTO req, @PathVariable String disciplina) {
-        NotaResponseDTO res = notasService.lancarNotas(req.getId_cachorro(), disciplina, req.getNota());
+        NotaResponseDTO res = notasService.lancarNotas(req.getId_cachorro(), disciplina, req.getNota(), req.getSemestre());
         CachorroResponseDTO cao = cachorroService.buscarCaoPorId(res.getId_cachorro());
         return "As notas, do cachorro" + cao.getNome() + ", foram lançadas, pelo professor " + res.getId_professor() + ", com sucesso!";
     }

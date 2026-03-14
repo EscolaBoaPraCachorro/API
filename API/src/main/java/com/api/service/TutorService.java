@@ -1,11 +1,10 @@
 package com.api.service;
 
-import com.api.dto.cachorro.CachorroResponseDTO;
 import com.api.dto.tutor.TutorRequestDTO;
 import com.api.dto.tutor.TutorResponseDTO;
-import com.api.model.Cachorro;
 import com.api.model.Tutor;
 import com.api.repository.RepositoryTutor;
+
 import org.springframework.stereotype.Service;
 import tools.jackson.databind.ObjectMapper;
 

@@ -29,6 +29,7 @@ public class NotasService {
 
     public List<NotaResponseDTO> buscarNotaPorIdCachorro(Long idCachorro) {
         List<Notas> notas = repository.findByIdCachorro(idCachorro);
+        System.out.println(notas);
         List<NotaResponseDTO> listNotaDTO = new ArrayList<>();
 
         for (Notas nota : notas) {
@@ -77,13 +78,13 @@ public class NotasService {
         return (nota1 + nota2) / 2;
     }
 
-    public NotaResponseDTO lancarNotas(Long id_cachorro, String disciplina, Integer nota) {
+    public NotaResponseDTO lancarNotas(Long id_cachorro, String disciplina, Integer nota, Integer semestre) {
         LocalDate localDate = LocalDate.now();
         Date data_atual = Date.valueOf(localDate);
 
         Long idProf = disciplinaService.buscarIdProfessorPorDisciplina(disciplina);
 
-        Notas notas = new Notas(id_cachorro, idProf, nota, data_atual);
+        Notas notas = new Notas(id_cachorro, idProf, nota, data_atual, semestre);
         Notas notasEnviadas = repository.save(notas);
         return objectMapper.convertValue(notasEnviadas, NotaResponseDTO.class);
     }

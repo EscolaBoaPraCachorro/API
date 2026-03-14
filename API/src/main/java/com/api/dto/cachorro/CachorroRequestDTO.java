@@ -33,8 +33,10 @@ public class CachorroRequestDTO {
     private Boolean aceito;
     @Schema(description = "Uma foto do cão", example = "https://imagem.com")
     private String imagem;
-    @Schema(description = "A alergia do cão ou não", example = "Nenhuma")
-    private String alergia;
+    @Schema(description = "A alergias do cão ou não", example = "Nenhuma")
+    private String alergias;
+    @Schema(description = "", example = "...")
+    private String situacao;
 
     public String getNome() {
         return nome;
@@ -132,11 +134,15 @@ public class CachorroRequestDTO {
         this.imagem = imagem;
     }
 
-    public String getAlergia() {
-        return alergia;
+    public String getAlergias() {
+        return alergias;
     }
 
-    public void setAlergia(String alergia) {
-        this.alergia = alergia;
+    public void setAlergias(String alergias) {
+        this.alergias = alergias;
+    }
+
+    public String getSituacao() {
+        return situacao;
     }
 }
