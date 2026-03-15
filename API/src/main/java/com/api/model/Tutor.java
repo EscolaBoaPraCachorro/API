@@ -1,9 +1,6 @@
 package com.api.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.sql.Date;
 
@@ -13,9 +10,11 @@ public class Tutor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    @Column(name = "data_nascimento")
     private Date dataNascimento;
     private String endereco;
-    private String data_cadastro;
+    @Column(name = "data_cadastro")
+    private String dataCadastro;
     private String genero;
     private String telefone;
     private String cpf;
@@ -28,7 +27,7 @@ public class Tutor {
             String nome,
             Date dataNascimento,
             String endereco,
-            String data_cadastro,
+            String dataCadastro,
             String genero,
             String telefone,
             String cpf,
@@ -40,7 +39,7 @@ public class Tutor {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
         this.endereco = endereco;
-        this.data_cadastro = data_cadastro;
+        this.dataCadastro = dataCadastro;
         this.genero = genero;
         this.telefone = telefone;
         this.cpf = cpf;
@@ -78,7 +77,7 @@ public class Tutor {
         this.endereco = endereco;
     }
 
-    public String getData_cadastro() {return data_cadastro;}
+    public String getDataCadastro() {return dataCadastro;}
 
     public String getGenero() {
         return genero;
@@ -131,7 +130,7 @@ public class Tutor {
                 ", nome='" + nome + '\'' +
                 ", dataNascimento=" + dataNascimento +
                 ", endereco='" + endereco + '\'' +
-                ", data_cadastro='" + data_cadastro + '\'' +
+                ", dataCadastro='" + dataCadastro + '\'' +
                 ", genero='" + genero + '\'' +
                 ", telefone='" + telefone + '\'' +
                 ", cpf='" + cpf + '\'' +

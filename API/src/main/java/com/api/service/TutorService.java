@@ -27,7 +27,7 @@ public class TutorService {
     }
 
     public Long buscarIdPorIdCachorro(Long idCachorro) {
-        return service.buscarCaoPorId(idCachorro).getTutor_id();
+        return service.buscarCaoPorId(idCachorro).getTutorId();
     }
 
     public String buscarImagemPorIdTutor(Long idTutor) {
@@ -56,5 +56,10 @@ public class TutorService {
         tutorExistente.setDescricao(descricao);
         Tutor tutorAtualizado = repository.save(tutorExistente);
         return objectMapper.convertValue(tutorAtualizado, TutorResponseDTO.class);
+    }
+
+    public TutorResponseDTO buscarTutorPorEmail(String email) {
+        Tutor tutor = repository.findByEmail(email);
+        return objectMapper.convertValue(tutor, TutorResponseDTO.class);
     }
 }

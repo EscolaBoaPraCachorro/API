@@ -23,7 +23,7 @@ public class ProfessorResponseDTO {
     public ProfessorResponseDTO(Professor professor) {
         this.id = professor.getId();
         this.nome = professor.getNome();
-        this.data_nascimento = professor.getData_nascimento();
+        this.data_nascimento = professor.getDataNascimento();
         this.endereco = professor.getEndereco();
         this.genero = professor.getGenero();
         this.telefone = professor.getTelefone();

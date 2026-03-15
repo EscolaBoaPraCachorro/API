@@ -54,7 +54,7 @@ public class ProfessorService {
 
     public Date buscarDataNascimentoProfessorPorId(@PathVariable Long id) {
         Professor professor = objectMapper.convertValue(repository.findById(id), Professor.class);
-        return professor.getData_nascimento();
+        return professor.getDataNascimento();
     }
 
     public ProfessorResponseDTO inserirProfessor(@RequestBody ProfessorRequestDTO req){

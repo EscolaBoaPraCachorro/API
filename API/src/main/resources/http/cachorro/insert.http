@@ -4,16 +4,16 @@ Content-Type: application/json
 
 {
   "nome": "Orelha",
-  "data_nascimento": "2016-07-08",
-  "tutor_id": 1,
+  "dataNascimento": "2016-07-08",
+  "tutorId": 1,
   "turma": "1E",
-  "data_cadastro": "2026-01-01",
+  "dataCadastro": "2026-01-01",
   "sexo": "M",
   "raca": "Sem raça definida",
   "ativo": false,
-  "tem_pedigree": false,
+  "temPedigree": false,
   "rga": "RGA-123456",
-  "sin_patinhas": "sim",
+  "sinPatinhas": "sim",
   "aceito": true,
   "imagem": "https://imagem.com",
   "alergias": "Nenhuma"

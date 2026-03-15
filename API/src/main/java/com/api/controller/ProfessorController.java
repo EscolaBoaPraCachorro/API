@@ -1,6 +1,5 @@
 package com.api.controller;
 
-import com.api.dto.cachorro.CachorroResponseDTO;
 import com.api.dto.professor.ProfessorRequestDTO;
 import com.api.dto.professor.ProfessorResponseDTO;
 import com.api.service.ProfessorService;

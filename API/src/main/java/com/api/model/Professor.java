@@ -1,9 +1,6 @@
 package com.api.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -14,7 +11,8 @@ public class Professor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private Date data_nascimento;
+    @Column(name = "data_nascimento")
+    private Date dataNascimento;
     private String endereco;
     private String genero;
     private String telefone;
@@ -26,7 +24,7 @@ public class Professor {
 
     public Professor(
             String nome,
-            Date data_nascimento,
+            Date dataNascimento,
             String endereco,
             String genero,
             String telefone,
@@ -37,7 +35,7 @@ public class Professor {
             String disciplina
     ) {
         this.nome = nome;
-        this.data_nascimento = data_nascimento;
+        this.dataNascimento = dataNascimento;
         this.endereco = endereco;
         this.genero = genero;
         this.telefone = telefone;
@@ -64,12 +62,12 @@ public class Professor {
         this.nome = nome;
     }
 
-    public Date getData_nascimento() {
-        return data_nascimento;
+    public Date getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setData_nascimento(Date data_nascimento) {
-        this.data_nascimento = data_nascimento;
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
     public String getEndereco() {
@@ -141,7 +139,7 @@ public class Professor {
         return "Professor{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", data_nascimento=" + data_nascimento +
+                ", dataNascimento=" + dataNascimento +
                 ", endereco='" + endereco + '\'' +
                 ", genero='" + genero + '\'' +
                 ", telefone='" + telefone + '\'' +

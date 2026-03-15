@@ -74,6 +74,11 @@ public class CachorroService {
         return cao.getTurma();
     }
 
+    public CachorroResponseDTO buscarCachorroPorTutorId(Long id) {
+        Cachorro cachorro = repositoryCachorro.findByTutorId(id);
+        return objectMapper.convertValue(cachorro, CachorroResponseDTO.class);
+    }
+
     public CachorroResponseDTO cadastrarCachorro(CachorroRequestDTO dto) {
         Cachorro cachorro = objectMapper.convertValue(dto, Cachorro.class);
         Cachorro cadastrado = repositoryCachorro.save(cachorro);
@@ -84,13 +89,13 @@ public class CachorroService {
         Cachorro caoExistente = repositoryCachorro.findById(id).orElse(null);
 
         caoExistente.setNome(req.getNome());
-        caoExistente.setData_nascimento(req.getData_nascimento());
+        caoExistente.setDataNascimento(req.getData_nascimento());
         caoExistente.setTurma(req.getTurma());
         caoExistente.setSexo(req.getSexo());
         caoExistente.setRaca(req.getRaca());
         caoExistente.setAtivo(req.getAtivo());
-        caoExistente.setTem_pedigree(req.getTem_pedigree());
-        caoExistente.setSin_patinhas(req.getSin_patinhas());
+        caoExistente.setTemPedigree(req.getTem_pedigree());
+        caoExistente.setSinPatinhas(req.getSin_patinhas());
         caoExistente.setAceito(req.getAceito());
         caoExistente.setImagem(req.getImagem());
         caoExistente.setAlergia(req.getAlergias());

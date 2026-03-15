@@ -19,7 +19,7 @@ public class ObservacaoResponseDTO {
         this.id_cachorro = observacao.getId_cachorro();
         this.id_professor = observacao.getId_professor();
         this.descricao = observacao.getDescricao();
-        this.data_publicacao = observacao.getData_publicacao();
+        this.data_publicacao = observacao.getDataPublicacao();
     }
 
     public Long getId() {

@@ -31,19 +31,19 @@ public class NotaResponseDTO {
         this.id = id;
     }
 
-    public Long getId_cachorro() {
+    public Long getIdCachorro() {
         return idCachorro;
     }
 
-    public void setId_cachorro(Long id_cachorro) {
+    public void setIdCachorro(Long id_cachorro) {
         this.idCachorro = id_cachorro;
     }
 
-    public Long getId_professor() {
+    public Long getIdProfessor() {
         return idProfessor;
     }
 
-    public void setId_professor(Long id_professor) {
+    public void setIdProfessor(Long id_professor) {
         this.idProfessor = id_professor;
     }
 

@@ -14,18 +14,19 @@ public class Observacao {
     @Column(name = "id_professor")
     private Long idProfessor;
     private String descricao;
-    private Date data_publicacao;
+    @Column(name = "data_publicacao")
+    private Date dataPublicacao;
 
     public Observacao(
             Long id_cachorro,
             Long id_professor,
             String descricao,
-            Date data_publicacao
+            Date dataPublicacao
     ) {
         this.idCachorro = id_cachorro;
         this.idProfessor = id_professor;
         this.descricao = descricao;
-        this.data_publicacao = data_publicacao;
+        this.dataPublicacao = dataPublicacao;
     }
 
     public Observacao() {}
@@ -50,8 +51,8 @@ public class Observacao {
         this.descricao = descricao;
     }
 
-    public Date getData_publicacao() {
-        return data_publicacao;
+    public Date getDataPublicacao() {
+        return dataPublicacao;
     }
 
     @Override
@@ -61,7 +62,7 @@ public class Observacao {
                 ", id_cachorro=" + idCachorro +
                 ", id_professor=" + idProfessor +
                 ", descricao='" + descricao + '\'' +
-                ", data_publicacao=" + data_publicacao +
+                ", dataPublicacao=" + dataPublicacao +
                 '}';
     }
 }

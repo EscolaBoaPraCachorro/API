@@ -1,6 +1,5 @@
 package com.api.controller;
 
-import com.api.dto.cachorro.CachorroResponseDTO;
 import com.api.dto.tutor.TutorRequestDTO;
 import com.api.dto.tutor.TutorResponseDTO;
 import com.api.service.TutorService;
@@ -37,11 +36,15 @@ public class TutorController {
         return service.buscarDataNascimentoTutorPorId(id);
     }
 
+    @GetMapping("/buscarDadosTutorPorTutor/{email}")
+    public TutorResponseDTO buscarDadosTutorPorTutor(@PathVariable String email) {
+        return service.buscarTutorPorEmail(email);
+    }
+
     @PostMapping("/cadastrar")
     public TutorResponseDTO cadastrarTutor(@RequestBody TutorRequestDTO dto) {
         return service.cadastrarTutor(dto);
     }
-
 
     @PatchMapping("/atualizarDescricao/{id}")
     public String atualizarDescricao(@RequestBody TutorRequestDTO req, @PathVariable Long id) {

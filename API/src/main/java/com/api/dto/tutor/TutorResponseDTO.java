@@ -16,6 +16,7 @@ public class TutorResponseDTO {
     private String rg;
     private String email;
     private String imagem;
+    private String descricao;
 
     public TutorResponseDTO() {}
 
@@ -24,13 +25,14 @@ public class TutorResponseDTO {
         this.nome = tutor.getNome();
         this.dataNascimento = tutor.getDataNascimento();
         this.endereco = tutor.getEndereco();
-        this.data_cadastro = tutor.getData_cadastro();
+        this.data_cadastro = tutor.getDataCadastro();
         this.genero = tutor.getGenero();
         this.telefone = tutor.getTelefone();
         this.cpf = tutor.getCpf();
         this.rg = tutor.getRg();
         this.email = tutor.getEmail();
         this.imagem = tutor.getImagem();
+        this.descricao = tutor.getDescricao();
     }
 
     public Long getId() {
@@ -115,5 +117,13 @@ public class TutorResponseDTO {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 }

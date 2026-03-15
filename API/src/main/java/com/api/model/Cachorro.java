@@ -1,9 +1,6 @@
 package com.api.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.util.Date;
 
@@ -13,16 +10,17 @@ public class Cachorro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    private Date data_nascimento;
-    private Long tutor_id;
+    private Date dataNascimento;
+    @Column(name = "tutor_id")
+    private Long tutorId;
     private String turma;
-    private Date data_cadastro;
+    private Date dataCadastro;
     private String sexo;
     private String raca;
     private Boolean ativo;
-    private Boolean tem_pedigree;
+    private Boolean temPedigree;
     private String rga;
-    private String sin_patinhas;
+    private String sinPatinhas;
     private Boolean aceito;
     private String imagem;
     private String alergias;
@@ -31,16 +29,16 @@ public class Cachorro {
     public Cachorro(
             Long id,
             String nome,
-            Date data_nascimento,
+            Date dataNascimento,
             Long tutor_id,
             String turma,
-            Date data_cadastro,
+            Date dataCadastro,
             String sexo,
             String raca,
             Boolean ativo,
-            Boolean tem_pedigree,
+            Boolean temPedigree,
             String rga,
-            String sin_patinhas,
+            String sinPatinhas,
             Boolean aceito,
             String imagem,
             String alergia,
@@ -48,16 +46,16 @@ public class Cachorro {
     ) {
         this.id = id;
         this.nome = nome;
-        this.data_nascimento = data_nascimento;
-        this.tutor_id = tutor_id;
+        this.dataNascimento = dataNascimento;
+        this.tutorId = tutor_id;
         this.turma = turma;
-        this.data_cadastro = data_cadastro;
+        this.dataCadastro = dataCadastro;
         this.sexo = sexo;
         this.raca = raca;
         this.ativo = ativo;
-        this.tem_pedigree = tem_pedigree;
+        this.temPedigree = temPedigree;
         this.rga = rga;
-        this.sin_patinhas = sin_patinhas;
+        this.sinPatinhas = sinPatinhas;
         this.aceito = aceito;
         this.imagem = imagem;
         this.alergias = alergia;
@@ -78,16 +76,16 @@ public class Cachorro {
         this.nome = nome;
     }
 
-    public Date getData_nascimento() {
-        return data_nascimento;
+    public Date getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setData_nascimento(Date data_nascimento) {
-        this.data_nascimento = data_nascimento;
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
-    public Long getTutor_id() {
-        return tutor_id;
+    public Long getTutorId() {
+        return tutorId;
     }
 
     public String getTurma() {
@@ -98,8 +96,8 @@ public class Cachorro {
         this.turma = turma;
     }
 
-    public Date getData_cadastro() {
-        return data_cadastro;
+    public Date getDataCadastro() {
+        return dataCadastro;
     }
 
     public String getSexo() {
@@ -126,24 +124,24 @@ public class Cachorro {
         this.ativo = ativo;
     }
 
-    public Boolean getTem_pedigree() {
-        return tem_pedigree;
+    public Boolean getTemPedigree() {
+        return temPedigree;
     }
 
-    public void setTem_pedigree(Boolean tem_pedigree) {
-        this.tem_pedigree = tem_pedigree;
+    public void setTemPedigree(Boolean temPedigree) {
+        this.temPedigree = temPedigree;
     }
 
     public String getRga() {
         return rga;
     }
 
-    public String getSin_patinhas() {
-        return sin_patinhas;
+    public String getSinPatinhas() {
+        return sinPatinhas;
     }
 
-    public void setSin_patinhas(String sin_patinhas) {
-        this.sin_patinhas = sin_patinhas;
+    public void setSinPatinhas(String sinPatinhas) {
+        this.sinPatinhas = sinPatinhas;
     }
 
     public Boolean getAceito() {
@@ -162,7 +160,7 @@ public class Cachorro {
         this.imagem = imagem;
     }
 
-    public String getAlergia() {
+    public String getAlergias() {
         return alergias;
     }
 
@@ -183,16 +181,16 @@ public class Cachorro {
         return "Cachorro{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", data_nascimento=" + data_nascimento +
-                ", tutor_id=" + tutor_id +
+                ", dataNascimento=" + dataNascimento +
+                ", tutor_id=" + tutorId +
                 ", turma='" + turma + '\'' +
-                ", data_cadastro=" + data_cadastro +
+                ", dataCadastro=" + dataCadastro +
                 ", sexo='" + sexo + '\'' +
                 ", raca='" + raca + '\'' +
                 ", ativo=" + ativo +
-                ", tem_pedigree=" + tem_pedigree +
+                ", temPedigree=" + temPedigree +
                 ", rga='" + rga + '\'' +
-                ", sin_patinhas='" + sin_patinhas + '\'' +
+                ", sinPatinhas='" + sinPatinhas + '\'' +
                 ", aceito=" + aceito +
                 ", imagem='" + imagem + '\'' +
                 ", alergia='" + alergias + '\'' +

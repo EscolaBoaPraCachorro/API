@@ -39,30 +39,30 @@ public class NotaController {
 
     @GetMapping("/buscarNotaDoPrimeiroSemestre/{disciplina}")
     public Integer buscarNotaDoPrimeiroSemestre(@RequestBody NotaRequestDTO req, @PathVariable String disciplina) {
-        return notasService.buscarNotaDoPrimeiroSemestrePorDisciplina(req.getId_cachorro(), disciplina);
+        return notasService.buscarNotaDoPrimeiroSemestrePorDisciplina(req.getIdCachorro(), disciplina);
     }
 
     @GetMapping("/buscarNotaDoSegundoSemestre/{disciplina}")
     public Integer buscarNotaDoSegundoSemestre(@RequestBody NotaRequestDTO req, @PathVariable String disciplina) {
-        return notasService.buscarNotaDoSegundoSemestrePorDisciplina(req.getId_cachorro(), disciplina);
+        return notasService.buscarNotaDoSegundoSemestrePorDisciplina(req.getIdCachorro(), disciplina);
     }
 
     @GetMapping("/calcularMedia/{disciplina}")
     public Integer calcularMedia(@RequestBody NotaRequestDTO req, @PathVariable String disciplina) {
-        return notasService.calcularMedia(req.getId_cachorro(), disciplina);
+        return notasService.calcularMedia(req.getIdCachorro(), disciplina);
     }
 
     @PostMapping("/inserirNota/{disciplina}")
     public String lancarNotas(@RequestBody NotaRequestDTO req, @PathVariable String disciplina) {
-        NotaResponseDTO res = notasService.lancarNotas(req.getId_cachorro(), disciplina, req.getNota(), req.getSemestre());
-        CachorroResponseDTO cao = cachorroService.buscarCaoPorId(res.getId_cachorro());
-        return "As notas, do cachorro" + cao.getNome() + ", foram lançadas, pelo professor " + res.getId_professor() + ", com sucesso!";
+        NotaResponseDTO res = notasService.lancarNotas(req.getIdCachorro(), disciplina, req.getNota(), req.getSemestre());
+        CachorroResponseDTO cao = cachorroService.buscarCaoPorId(res.getIdCachorro());
+        return "As notas, do cachorro" + cao.getNome() + ", foram lançadas, pelo professor " + res.getIdProfessor() + ", com sucesso!";
     }
 
     @PutMapping("/atualizarNota")
     public String atualizarNota(@RequestBody NotaRequestDTO dto) {
-        NotaResponseDTO res = notasService.atualizarNota(dto.getId_cachorro(), dto.getId_professor(), dto.getNota(), dto.getNova_nota());
-        CachorroResponseDTO cao = cachorroService.buscarCaoPorId(res.getId_cachorro());
+        NotaResponseDTO res = notasService.atualizarNota(dto.getIdCachorro(), dto.getIdProfessor(), dto.getNota(), dto.getNova_nota());
+        CachorroResponseDTO cao = cachorroService.buscarCaoPorId(res.getIdCachorro());
         return "A nota, do cão " + cao.getNome() + ", foi atualizada com sucesso!";
     }
 }

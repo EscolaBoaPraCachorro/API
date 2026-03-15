@@ -8,6 +8,7 @@ public class Disciplinas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    @Column(name = "id_professor", nullable = false)
     private Long idProfessor;
 
     public Disciplinas(String nome, Long idProfessor) {

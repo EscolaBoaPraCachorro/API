@@ -1,6 +1,7 @@
 package com.api.dto.cachorro;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Column;
 
 import java.util.Date;
 
@@ -12,7 +13,7 @@ public class CachorroRequestDTO {
     @Schema(description = "Data de nascimeno do cachorro", example = "2016-07-08")
     private Date data_nascimento;
     @Schema(description = "ID do tutor", example = "1")
-    private Long tutor_id;
+    private Long tutorId;
     @Schema(description = "Turma em que o cão está estudando", example = "1E")
     private String turma;
     @Schema(description = "Data de qunado o cão foi cadastrado no sistema", example = "2026-01-01")
@@ -54,12 +55,12 @@ public class CachorroRequestDTO {
         this.data_nascimento = data_nascimento;
     }
 
-    public Long getTutor_id() {
-        return tutor_id;
+    public Long getTutorId() {
+        return tutorId;
     }
 
-    public void setTutor_id(Long tutor_id) {
-        this.tutor_id = tutor_id;
+    public void setTutorId(Long tutorId) {
+        this.tutorId = tutorId;
     }
 
     public String getTurma() {

@@ -2,6 +2,7 @@ package com.api.dto.cachorro;
 
 import com.api.model.Cachorro;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.Column;
 
 import java.util.Date;
 
@@ -15,7 +16,8 @@ public class CachorroResponseDTO {
     @Schema(description = "Data de nascimeno do cachorro", example = "2016-07-08")
     private Date data_nascimento;
     @Schema(description = "ID do tutor", example = "1")
-    private Long tutor_id;
+    @Column(name = "tutor_id")
+    private Long tutorId;
     @Schema(description = "Turma em que o cão está estudando", example = "1E")
     private String turma;
     @Schema(description = "Data de qunado o cão foi cadastrado no sistema", example = "2026-01-01")
@@ -42,16 +44,16 @@ public class CachorroResponseDTO {
     public CachorroResponseDTO(Cachorro cao) {
         this.id = cao.getId();
         this.nome = cao.getNome();
-        this.data_nascimento = cao.getData_nascimento();
-        this.tutor_id = cao.getTutor_id();
+        this.data_nascimento = cao.getDataNascimento();
+        this.tutorId = cao.getTutorId();
         this.turma = cao.getTurma();
-        this.data_cadastro = cao.getData_cadastro();
+        this.data_cadastro = cao.getDataCadastro();
         this.sexo = cao.getSexo();
         this.rga = cao.getRga();
         this.ativo = cao.getAtivo();
-        this.tem_pedigree = cao.getTem_pedigree();
+        this.tem_pedigree = cao.getTemPedigree();
         this.rga = cao.getRga();
-        this.sin_patinhas = cao.getSin_patinhas();
+        this.sin_patinhas = cao.getSinPatinhas();
     }
 
     public CachorroResponseDTO() {}
@@ -68,8 +70,8 @@ public class CachorroResponseDTO {
         return data_nascimento;
     }
 
-    public Long getTutor_id() {
-        return tutor_id;
+    public Long getTutorId() {
+        return tutorId;
     }
 
     public String getTurma() {
@@ -122,7 +124,7 @@ public class CachorroResponseDTO {
                 "id=" + id +
                 ", nome='" + nome + '\'' +
                 ", data_nascimento=" + data_nascimento +
-                ", tutor_id=" + tutor_id +
+                ", tutor_id=" + tutorId +
                 ", turma='" + turma + '\'' +
                 ", data_cadastro=" + data_cadastro +
                 ", sexo='" + sexo + '\'' +
