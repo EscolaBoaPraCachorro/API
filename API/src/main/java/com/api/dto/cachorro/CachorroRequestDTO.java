@@ -51,80 +51,32 @@ public class CachorroRequestDTO {
         return data_nascimento;
     }
 
-    public void setData_nascimento(Date data_nascimento) {
-        this.data_nascimento = data_nascimento;
-    }
-
-    public Long getTutorId() {
-        return tutorId;
-    }
-
-    public void setTutorId(Long tutorId) {
-        this.tutorId = tutorId;
-    }
-
     public String getTurma() {
         return turma;
-    }
-
-    public void setTurma(String turma) {
-        this.turma = turma;
-    }
-
-    public Date getData_cadastro() {
-        return data_cadastro;
     }
 
     public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
     public String getRaca() {
         return raca;
-    }
-
-    public void setRaca(String raca) {
-        this.raca = raca;
     }
 
     public Boolean getAtivo() {
         return ativo;
     }
 
-    public void setAtivo(Boolean ativo) {
-        this.ativo = ativo;
-    }
-
     public Boolean getTem_pedigree() {
         return tem_pedigree;
-    }
-
-    public void setTem_pedigree(Boolean tem_pedigree) {
-        this.tem_pedigree = tem_pedigree;
-    }
-
-    public String getRga() {
-        return rga;
     }
 
     public String getSin_patinhas() {
         return sin_patinhas;
     }
 
-    public void setSin_patinhas(String sin_patinhas) {
-        this.sin_patinhas = sin_patinhas;
-    }
-
     public Boolean getAceito() {
         return aceito;
-    }
-
-    public void setAceito(Boolean aceito) {
-        this.aceito = aceito;
     }
 
     public String getImagem() {
@@ -137,10 +89,6 @@ public class CachorroRequestDTO {
 
     public String getAlergias() {
         return alergias;
-    }
-
-    public void setAlergias(String alergias) {
-        this.alergias = alergias;
     }
 
     public String getSituacao() {

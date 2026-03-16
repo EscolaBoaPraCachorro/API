@@ -48,9 +48,9 @@ public class ProfessorController {
         return "O professor " + res.getNome() + " foi inserido com sucesso!";
     }
 
-    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("/excluir/{id}")
     public String deletar(@PathVariable Long id) {
-        ProfessorResponseDTO res = professorService.deletarProfessor(id);
-        return "O professor " + res.getNome() + " foi deletado!";
+        ProfessorResponseDTO res = professorService.excluirProfessor(id);
+        return "O professor " + res.getNome() + " foi excluído com sucesso!";
     }
 }

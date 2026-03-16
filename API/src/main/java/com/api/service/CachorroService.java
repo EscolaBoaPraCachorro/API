@@ -5,8 +5,6 @@ import com.api.dto.cachorro.CachorroResponseDTO;
 import com.api.model.Cachorro;
 import com.api.repository.RepositoryCachorro;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import tools.jackson.databind.ObjectMapper;
 
 import java.util.ArrayList;
@@ -26,16 +24,16 @@ public class CachorroService {
 
     public List<CachorroResponseDTO> listarCaes() {
         List<Cachorro> cao = repositoryCachorro.findAll();
-        List<CachorroResponseDTO> listCaoDTO = new ArrayList<>();
+        List<CachorroResponseDTO> dto = new ArrayList<>();
 
         for (Cachorro cachorro : cao) {
-            listCaoDTO.add(objectMapper.convertValue(cachorro, CachorroResponseDTO.class));
+            dto.add(objectMapper.convertValue(cachorro, CachorroResponseDTO.class));
         }
 
-        return listCaoDTO;
+        return dto;
     }
 
-    public CachorroResponseDTO buscarCaoPorId(Long id) {
+    public CachorroResponseDTO buscarCachorroPorId(Long id) {
         Cachorro cao = objectMapper.convertValue(repositoryCachorro.findById(id), Cachorro.class);
         return objectMapper.convertValue(cao, CachorroResponseDTO.class);
     }
@@ -54,22 +52,22 @@ public class CachorroService {
         return dto;
     }
 
-    public String buscarImagemPorCachorro(Long id) {
+    public String buscarImagemPorId(Long id) {
         CachorroResponseDTO cao = objectMapper.convertValue(repositoryCachorro.findById(id), CachorroResponseDTO.class);
         return cao.getImagem();
     }
 
-    public Date buscarDataNascimentoPorCachorro(Long id) {
+    public Date buscarDataNascimentoPorId(Long id) {
         CachorroResponseDTO cao = objectMapper.convertValue(repositoryCachorro.findById(id), CachorroResponseDTO.class);
         return cao.getData_nascimento();
     }
 
-    public String buscarNomePorCachorro(Long id) {
+    public String buscarNomePorId(Long id) {
         CachorroResponseDTO cao = objectMapper.convertValue(repositoryCachorro.findById(id), CachorroResponseDTO.class);
         return cao.getNome();
     }
 
-    public String buscarTurmaPorCachorro(Long id){
+    public String buscarTurmaPorId(Long id){
         CachorroResponseDTO cao = objectMapper.convertValue(repositoryCachorro.findById(id), CachorroResponseDTO.class);
         return cao.getTurma();
     }
@@ -91,8 +89,8 @@ public class CachorroService {
         return objectMapper.convertValue(cadastrado, CachorroResponseDTO.class);
     }
 
-    public CachorroResponseDTO atualizarCachorro(@PathVariable Long id, @RequestBody CachorroRequestDTO req){
-        Cachorro caoExistente = repositoryCachorro.findById(id).orElse(null);
+    public CachorroResponseDTO atualizarCachorro(Long id, CachorroRequestDTO req){
+        Cachorro caoExistente = objectMapper.convertValue(repositoryCachorro.findById(id), Cachorro.class);
 
         caoExistente.setNome(req.getNome());
         caoExistente.setDataNascimento(req.getData_nascimento());
@@ -112,22 +110,74 @@ public class CachorroService {
         return objectMapper.convertValue(caoAtualizado, CachorroResponseDTO.class);
     }
 
+    public CachorroResponseDTO atualizarParcialmente(Long id, CachorroRequestDTO req){
+        Cachorro caoExistente = repositoryCachorro.findById(id).orElse(null);
+
+        assert caoExistente != null;
+        if (caoExistente.getNome() != null) {
+            caoExistente.setNome(req.getNome());
+        }
+
+        if (caoExistente.getDataNascimento() != null) {
+            caoExistente.setDataNascimento(req.getData_nascimento());
+        }
+
+        if (caoExistente.getTurma() != null) {
+            caoExistente.setTurma(req.getTurma());
+        }
+
+        if (caoExistente.getSexo() != null) {
+            caoExistente.setSexo(req.getSexo());
+        }
+
+        if (caoExistente.getRaca() != null) {
+            caoExistente.setRaca(req.getRaca());
+        }
+
+        if (caoExistente.getAtivo() != null) {
+            caoExistente.setAtivo(req.getAtivo());
+        }
+
+        if (caoExistente.getTemPedigree() != null) {
+            caoExistente.setTemPedigree(req.getTem_pedigree());
+        }
+
+        if (caoExistente.getSinPatinhas() != null) {
+            caoExistente.setSinPatinhas(req.getSin_patinhas());
+        }
+
+        if (caoExistente.getAceito() != null) {
+            caoExistente.setAceito(req.getAceito());
+        }
+
+        if (caoExistente.getImagem() != null) {
+            caoExistente.setImagem(req.getImagem());
+        }
+
+        if (caoExistente.getAlergias() != null) {
+            caoExistente.setAlergia(req.getAlergias());
+        }
+
+        Cachorro atualizado = repositoryCachorro.save(caoExistente);
+        return objectMapper.convertValue(atualizado, CachorroResponseDTO.class);
+    }
+
     public CachorroResponseDTO atualizarAtivo(Long id, Boolean ativo) {
-        Cachorro cachorroExistente = objectMapper.convertValue(buscarCaoPorId(id), Cachorro.class);
+        Cachorro cachorroExistente = objectMapper.convertValue(buscarCachorroPorId(id), Cachorro.class);
         cachorroExistente.setAtivo(ativo);
         Cachorro cachorroAtualizado = repositoryCachorro.save(cachorroExistente);
         return objectMapper.convertValue(cachorroAtualizado, CachorroResponseDTO.class);
     }
 
     public CachorroResponseDTO atualizarImagem(Long id, String imagem) {
-        Cachorro cachorroExistente = objectMapper.convertValue(buscarCaoPorId(id), Cachorro.class);
+        Cachorro cachorroExistente = objectMapper.convertValue(buscarCachorroPorId(id), Cachorro.class);
         cachorroExistente.setImagem(imagem);
         Cachorro cachorroAtualizado = repositoryCachorro.save(cachorroExistente);
         return objectMapper.convertValue(cachorroAtualizado, CachorroResponseDTO.class);
     }
 
-    public CachorroResponseDTO deletarCachorro(Long id){
-        Cachorro cachorro = repositoryCachorro.findById(id).orElse(null);
+    public CachorroResponseDTO excluirCachorro(Long id){
+        Cachorro cachorro = objectMapper.convertValue(repositoryCachorro.findById(id), Cachorro.class);
         repositoryCachorro.delete(cachorro);
         return objectMapper.convertValue(cachorro, CachorroResponseDTO.class);
     }

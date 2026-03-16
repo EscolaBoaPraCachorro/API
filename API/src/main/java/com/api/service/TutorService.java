@@ -27,7 +27,7 @@ public class TutorService {
     }
 
     public Long buscarIdPorIdCachorro(Long idCachorro) {
-        return service.buscarCaoPorId(idCachorro).getTutorId();
+        return service.buscarCachorroPorId(idCachorro).getTutorId();
     }
 
     public String buscarImagemPorIdTutor(Long idTutor) {

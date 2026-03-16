@@ -31,24 +31,8 @@ public class NotaRequestDTO {
         return nota;
     }
 
-    public void setNota(Integer nota) {
-        this.nota = nota;
-    }
-
-    public Date getDataPublicacao() {
-        return dataPublicacao;
-    }
-
-    public void setDataPublicacao(Date dataPublicacao) {
-        this.dataPublicacao = dataPublicacao;
-    }
-
     public Integer getNova_nota() {
         return nova_nota;
-    }
-
-    public void setNova_nota(Integer nova_nota) {
-        this.nova_nota = nova_nota;
     }
 
     public Integer getSemestre() {

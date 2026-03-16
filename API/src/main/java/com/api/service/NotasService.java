@@ -30,36 +30,36 @@ public class NotasService {
     public List<NotaResponseDTO> buscarNotaPorIdCachorro(Long idCachorro) {
         List<Notas> notas = repository.findByIdCachorro(idCachorro);
         System.out.println(notas);
-        List<NotaResponseDTO> listNotaDTO = new ArrayList<>();
+        List<NotaResponseDTO> dto = new ArrayList<>();
 
         for (Notas nota : notas) {
-            listNotaDTO.add(objectMapper.convertValue(nota, NotaResponseDTO.class));
+            dto.add(objectMapper.convertValue(nota, NotaResponseDTO.class));
         }
 
-        return listNotaDTO;
+        return dto;
     }
 
     public List<NotaResponseDTO> buscarNotaPorIdCaoEIdProfessor(Long idCachorro, Long idProfessor) {
         List<Notas> notas = repository.findByIdCachorroAndIdProfessor(idCachorro, idProfessor);
-        List<NotaResponseDTO> listNotaDTO = new ArrayList<>();
+        List<NotaResponseDTO> dto = new ArrayList<>();
 
         for (Notas nota : notas) {
-            listNotaDTO.add(objectMapper.convertValue(nota, NotaResponseDTO.class));
+            dto.add(objectMapper.convertValue(nota, NotaResponseDTO.class));
         }
 
-        return listNotaDTO;
+        return dto;
     }
 
     public List<NotaResponseDTO> buscarNotasPorDisciplina(String disciplina) {
         Long idProfessor = disciplinaService.buscarIdProfessorPorDisciplina(disciplina);
         List<Notas> notas = repository.findByIdProfessor(idProfessor);
-        List<NotaResponseDTO> listNotaDTO = new ArrayList<>();
+        List<NotaResponseDTO> dto = new ArrayList<>();
 
         for (Notas nota : notas) {
-            listNotaDTO.add(objectMapper.convertValue(nota, NotaResponseDTO.class));
+            dto.add(objectMapper.convertValue(nota, NotaResponseDTO.class));
         }
 
-        return listNotaDTO;
+        return dto;
     }
 
     public Integer buscarNotaDoPrimeiroSemestrePorDisciplina (Long idCachorro, String disciplina) {

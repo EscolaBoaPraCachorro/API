@@ -25,37 +25,37 @@ public class CachorroController {
 
     @GetMapping("/buscarCaoPorId/{id}")
     public CachorroResponseDTO buscarCaoPorId(@PathVariable Long id) {
-        return service.buscarCaoPorId(id);
+        return service.buscarCachorroPorId(id);
     }
 
-    @GetMapping("/buscarTurma/{turma}")
+    @GetMapping("/buscarCaoPorTurma/{turma}")
     public CachorroResponseDTO buscarCaoPorTurma(@PathVariable String turma) {
         return service.buscarCachorroPorTurma(URLDecoder.decode(turma, StandardCharsets.UTF_8));
     }
 
-    @GetMapping("/buscarCaoPorTurma/{turma}")
+    @GetMapping("/buscarTurma/{turma}")
     public List<CachorroResponseDTO> buscarTurma(@PathVariable String turma) {
         return service.buscarTurma(URLDecoder.decode(turma, StandardCharsets.UTF_8));
     }
 
     @GetMapping("/buscarImagemPorCachorro/{id}")
     public String buscarImagemPorCachorro(@PathVariable Long id) {
-        return service. buscarImagemPorCachorro(id);
+        return service.buscarImagemPorId(id);
     }
 
     @GetMapping("/buscarDataNascimentoPorCachorro/{id}")
     public Date buscarDataNascimentoPorCachorro(@PathVariable Long id) {
-        return service.buscarDataNascimentoPorCachorro(id);
+        return service.buscarDataNascimentoPorId(id);
     }
 
     @GetMapping("/buscarNomePorCachorro/{id}")
     public String buscarNomePorCachorro(@PathVariable Long id) {
-        return service.buscarNomePorCachorro(id);
+        return service.buscarNomePorId(id);
     }
 
     @GetMapping("/buscarTurmaPorCachorro/{id}")
     public String buscarTurmaPorCachorro(@PathVariable Long id) {
-        return service.buscarTurmaPorCachorro(id);
+        return service.buscarTurmaPorId(id);
     }
 
     @GetMapping("/buscarCachorroPorIdTutor/{id}")
@@ -75,6 +75,12 @@ public class CachorroController {
         return "O cachorro " + res.getNome() + ", foi modificado com sucesso! ID: " + res.getId();
     }
 
+    @PatchMapping("/atualizarParcialmente/{id}")
+    public String atualizarParcialmente(@PathVariable Long id, @RequestBody CachorroRequestDTO req){
+        CachorroResponseDTO res = service.atualizarParcialmente(id, req);
+        return "Atualização do cachorro " + res.getNome() + " feita com sucesso!";
+    }
+
     @PatchMapping("/atualizarMatricula/{id}")
     public String atualizarMatricula(@RequestBody CachorroRequestDTO req, @PathVariable Long id) {
         CachorroResponseDTO res = service.atualizarAtivo(id, req.getAtivo());
@@ -87,9 +93,9 @@ public class CachorroController {
         return "A imagem do cachoroo, com ID: " + res.getId() + ", foi atualizada com sucesso!";
     }
 
-    @DeleteMapping("/deletar/{id}")
+    @DeleteMapping("/excluir/{id}")
     public String deletar(@PathVariable Long id) {
-        CachorroResponseDTO res = service.deletarCachorro(id);
-        return "O cachorro " + res.getNome() + " foi deletado!";
+        CachorroResponseDTO res = service.excluirCachorro(id);
+        return "O cachorro " + res.getNome() + " foi excluido com sucesso!";
     }
 }

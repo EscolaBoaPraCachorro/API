@@ -20,34 +20,6 @@ public class TutorRequestDTO {
         return nome;
     }
 
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public String getData_cadastro() {
-        return data_cadastro;
-    }
-
-    public String getGenero() {
-        return genero;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public String getRg() {
-        return rg;
-    }
-
     public String getEmail() {
         return email;
     }

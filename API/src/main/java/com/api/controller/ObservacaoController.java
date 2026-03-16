@@ -35,21 +35,21 @@ public class ObservacaoController {
     @PostMapping("/inserirObservacoes")
     public String enviarObservacoes(@RequestBody ObservacaoRequestDTO req) {
         ObservacaoResponseDTO res = observacaoService.lancarObservacao(req.getId_cachorro(), req.getId_professor(), req.getDescricao());
-        CachorroResponseDTO cao = cachorroService.buscarCaoPorId(res.getId_cachorro());
+        CachorroResponseDTO cao = cachorroService.buscarCachorroPorId(res.getId_cachorro());
         return "As observações, para o cão " + cao.getNome() + ", foram enviadas com sucesso com o Id: " + res.getId();
     }
 
     @PostMapping("/inserirObservacoesPorDisciplina/{disciplina}")
     public String enviarObservacoesPorDisciplina(@RequestBody ObservacaoRequestDTO req, @PathVariable String disciplina) {
         ObservacaoResponseDTO res = observacaoService.lancarObservacaoPorDisciplina(req.getId_cachorro(), disciplina, req.getDescricao());
-        CachorroResponseDTO cao = cachorroService.buscarCaoPorId(res.getId_cachorro());
+        CachorroResponseDTO cao = cachorroService.buscarCachorroPorId(res.getId_cachorro());
         return "As observações, para o cão " + cao.getNome() + ", foram enviadas com sucesso com o Id: " + res.getId();
     }
 
     @DeleteMapping("/excluir/{id}")
     public String excluirObservacao(@PathVariable Long id) {
         ObservacaoResponseDTO res = observacaoService.excluirObservacao(id);
-        CachorroResponseDTO cao = cachorroService.buscarCaoPorId(id);
-        return "A observação do cachorro " + cao.getNome() + "foi escluido com sucesso!!!";
+        CachorroResponseDTO cao = cachorroService.buscarCachorroPorId(id);
+        return "A observação do cachorro " + cao.getNome() + "foi escluido com sucesso!";
     }
 }

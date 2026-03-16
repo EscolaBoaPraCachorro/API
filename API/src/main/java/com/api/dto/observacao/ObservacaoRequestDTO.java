@@ -20,8 +20,4 @@ public class ObservacaoRequestDTO {
     public String getDescricao() {
         return descricao;
     }
-
-    public Date getData_publicacao() {
-        return data_publicacao;
-    }
 }

@@ -55,22 +55,22 @@ public class NotaController {
     @PostMapping("/inserirNota/{disciplina}")
     public String lancarNotas(@RequestBody NotaRequestDTO req, @PathVariable String disciplina) {
         NotaResponseDTO res = notasService.lancarNotas(req.getIdCachorro(), disciplina, req.getNota(), req.getSemestre());
-        CachorroResponseDTO cao = cachorroService.buscarCaoPorId(res.getIdCachorro());
+        CachorroResponseDTO cao = cachorroService.buscarCachorroPorId(res.getIdCachorro());
         return "As notas, do cachorro" + cao.getNome() + ", foram lançadas, pelo professor " + res.getIdProfessor() + ", com sucesso!";
     }
 
     @PutMapping("/atualizarNota")
     public String atualizarNota(@RequestBody NotaRequestDTO dto) {
         NotaResponseDTO res = notasService.atualizarNota(dto.getIdCachorro(), dto.getIdProfessor(), dto.getNota(), dto.getNova_nota());
-        CachorroResponseDTO cao = cachorroService.buscarCaoPorId(res.getIdCachorro());
+        CachorroResponseDTO cao = cachorroService.buscarCachorroPorId(res.getIdCachorro());
         return "A nota, do cão " + cao.getNome() + ", foi atualizada com sucesso!";
     }
 
     @DeleteMapping("/excluir/{id}")
     public String excluirNota(@PathVariable Long id) {
         NotaResponseDTO res = notasService.excluirNota(id);
-        CachorroResponseDTO cao = cachorroService.buscarCaoPorId(res.getIdCachorro());
-        return "A nota do cachorro " + cao.getNome() + " foi excluido com sucesso!!!";
+        CachorroResponseDTO cao = cachorroService.buscarCachorroPorId(res.getIdCachorro());
+        return "A nota do cachorro " + cao.getNome() + " foi excluido com sucesso!";
     }
 
 }

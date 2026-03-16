@@ -5,14 +5,11 @@ import com.api.dto.professor.ProfessorResponseDTO;
 import com.api.model.Professor;
 import com.api.repository.RepositoryProfessor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import tools.jackson.databind.ObjectMapper;
 
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class ProfessorService {
@@ -28,42 +25,42 @@ public class ProfessorService {
 
     public List<ProfessorResponseDTO> listarProfessores() {
         List<Professor> professor = repository.findAll();
-        List<ProfessorResponseDTO> professorResponseDTO = new ArrayList<>();
+        List<ProfessorResponseDTO> dto = new ArrayList<>();
 
         for (Professor professor1 : professor) {
-            professorResponseDTO.add(objectMapper.convertValue(professor1, ProfessorResponseDTO.class));
+            dto.add(objectMapper.convertValue(professor1, ProfessorResponseDTO.class));
         }
 
-        return professorResponseDTO;
+        return dto;
     }
 
-    public ProfessorResponseDTO buscarProfessorPorId(@PathVariable Long id) {
-        Optional<Professor> professor = repository.findById(id);
-        return objectMapper.convertValue(professor.get(), ProfessorResponseDTO.class);
+    public ProfessorResponseDTO buscarProfessorPorId(Long id) {
+        Professor professor = objectMapper.convertValue(repository.findById(id), Professor.class);
+        return objectMapper.convertValue(professor, ProfessorResponseDTO.class);
     }
 
-    public String buscarImagemPorId(@PathVariable Long id) {
+    public String buscarImagemPorId(Long id) {
         Professor professor = objectMapper.convertValue(repository.findById(id), Professor.class);
         return professor.getImagem();
     }
 
-    public String buscarNomePorId(@PathVariable Long id) {
+    public String buscarNomePorId(Long id) {
         Professor professor = objectMapper.convertValue(repository.findById(id), Professor.class);
         return professor.getNome();
     }
 
-    public Date buscarDataNascimentoProfessorPorId(@PathVariable Long id) {
+    public Date buscarDataNascimentoProfessorPorId(Long id) {
         Professor professor = objectMapper.convertValue(repository.findById(id), Professor.class);
         return professor.getDataNascimento();
     }
 
-    public ProfessorResponseDTO inserirProfessor(@RequestBody ProfessorRequestDTO req){
+    public ProfessorResponseDTO inserirProfessor(ProfessorRequestDTO req){
         Professor inserido = repository.save(objectMapper.convertValue(req, Professor.class));
         return objectMapper.convertValue(inserido, ProfessorResponseDTO.class);
     }
 
-    public ProfessorResponseDTO deletarProfessor(@PathVariable Long id){
-        Professor professor = repository.findById(id).orElse(null);
+    public ProfessorResponseDTO excluirProfessor(Long id){
+        Professor professor = objectMapper.convertValue(repository.findById(id), Professor.class);
         repository.delete(professor);
         return objectMapper.convertValue(professor, ProfessorResponseDTO.class);
     }
