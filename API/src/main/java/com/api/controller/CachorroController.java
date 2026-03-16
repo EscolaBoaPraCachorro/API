@@ -58,8 +58,8 @@ public class CachorroController {
         return service.buscarTurmaPorCachorro(id);
     }
 
-    @GetMapping("/buscarDadosCachorroPorIdTutor/{id}")
-    public CachorroResponseDTO buscarDadosCachorroPorIdTutor(@PathVariable Long id) {
+    @GetMapping("/buscarCachorroPorIdTutor/{id}")
+    public List<CachorroResponseDTO> buscarCachorroPorIdTutor(@PathVariable Long id) {
         return service.buscarCachorroPorTutorId(id);
     }
 

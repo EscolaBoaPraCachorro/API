@@ -65,4 +65,12 @@ public class NotaController {
         CachorroResponseDTO cao = cachorroService.buscarCaoPorId(res.getIdCachorro());
         return "A nota, do cão " + cao.getNome() + ", foi atualizada com sucesso!";
     }
+
+    @DeleteMapping("/excluir/{id}")
+    public String excluirNota(@PathVariable Long id) {
+        NotaResponseDTO res = notasService.excluirNota(id);
+        CachorroResponseDTO cao = cachorroService.buscarCaoPorId(res.getIdCachorro());
+        return "A nota do cachorro " + cao.getNome() + " foi excluido com sucesso!!!";
+    }
+
 }

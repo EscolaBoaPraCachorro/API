@@ -13,5 +13,5 @@ public interface RepositoryCachorro extends JpaRepository<Cachorro, Long> {
     List<Cachorro> findByTurma(String turma);
 
     @Query("SELECT c FROM Cachorro c WHERE c.tutorId = :id")
-    Cachorro findByTutorId(Long id);
+    List<Cachorro> findByTutorId(Long id);
 }

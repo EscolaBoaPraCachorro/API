@@ -36,7 +36,7 @@ public class TutorController {
         return service.buscarDataNascimentoTutorPorId(id);
     }
 
-    @GetMapping("/buscarDadosTutorPorTutor/{email}")
+    @GetMapping("/buscarPorEmail/{email}")
     public TutorResponseDTO buscarDadosTutorPorTutor(@PathVariable String email) {
         return service.buscarTutorPorEmail(email);
     }

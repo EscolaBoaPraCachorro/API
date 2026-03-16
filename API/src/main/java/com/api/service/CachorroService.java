@@ -74,9 +74,15 @@ public class CachorroService {
         return cao.getTurma();
     }
 
-    public CachorroResponseDTO buscarCachorroPorTutorId(Long id) {
-        Cachorro cachorro = repositoryCachorro.findByTutorId(id);
-        return objectMapper.convertValue(cachorro, CachorroResponseDTO.class);
+    public List<CachorroResponseDTO> buscarCachorroPorTutorId(Long id) {
+        List<Cachorro> cachorro = repositoryCachorro.findByTutorId(id);
+        List<CachorroResponseDTO> dto = new ArrayList<>();
+
+        for (Cachorro cachorro1 : cachorro) {
+            dto.add(objectMapper.convertValue(cachorro1, CachorroResponseDTO.class));
+        }
+
+        return dto;
     }
 
     public CachorroResponseDTO cadastrarCachorro(CachorroRequestDTO dto) {

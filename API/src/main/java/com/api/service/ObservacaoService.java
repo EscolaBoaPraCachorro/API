@@ -69,4 +69,10 @@ public class ObservacaoService {
         Observacao resposta = repository.save(observacao);
         return objectMapper.convertValue(resposta, ObservacaoResponseDTO.class);
     }
+
+    public ObservacaoResponseDTO excluirObservacao(Long id) {
+        Observacao observacao = objectMapper.convertValue(repository.findById(id), Observacao.class);
+        repository.delete(observacao);
+        return objectMapper.convertValue(observacao, ObservacaoResponseDTO.class);
+    }
 }

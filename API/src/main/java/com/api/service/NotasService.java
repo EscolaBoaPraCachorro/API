@@ -94,4 +94,10 @@ public class NotasService {
         notaExistente.setNota(nova_nota);
         return objectMapper.convertValue(repository.save(notaExistente), NotaResponseDTO.class);
     }
+
+    public NotaResponseDTO excluirNota(Long id) {
+        Notas nota = objectMapper.convertValue(repository.findById(id), Notas.class);
+        repository.delete(nota);
+        return objectMapper.convertValue(nota, NotaResponseDTO.class);
+    }
 }

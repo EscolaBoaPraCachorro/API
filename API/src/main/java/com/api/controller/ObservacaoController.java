@@ -45,4 +45,11 @@ public class ObservacaoController {
         CachorroResponseDTO cao = cachorroService.buscarCaoPorId(res.getId_cachorro());
         return "As observações, para o cão " + cao.getNome() + ", foram enviadas com sucesso com o Id: " + res.getId();
     }
+
+    @DeleteMapping("/excluir/{id}")
+    public String excluirObservacao(@PathVariable Long id) {
+        ObservacaoResponseDTO res = observacaoService.excluirObservacao(id);
+        CachorroResponseDTO cao = cachorroService.buscarCaoPorId(id);
+        return "A observação do cachorro " + cao.getNome() + "foi escluido com sucesso!!!";
+    }
 }
