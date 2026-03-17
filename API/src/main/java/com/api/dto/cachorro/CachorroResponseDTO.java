@@ -1,6 +1,7 @@
 package com.api.dto.cachorro;
 
 import com.api.model.Cachorro;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 
@@ -14,14 +15,16 @@ public class CachorroResponseDTO {
     @Schema(description = "Nome do cachorro", example = "Orelha")
     private String nome;
     @Schema(description = "Data de nascimeno do cachorro", example = "2016-07-08")
-    private Date data_nascimento;
+    @Column(name = "dataNascimento")
+    private Date dataNascimento;
     @Schema(description = "ID do tutor", example = "1")
     @Column(name = "tutor_id")
     private Long tutorId;
     @Schema(description = "Turma em que o cão está estudando", example = "1E")
     private String turma;
     @Schema(description = "Data de qunado o cão foi cadastrado no sistema", example = "2026-01-01")
-    private Date data_cadastro;
+    @JsonProperty("dataCadastro")
+    private Date dataCadastro;
     @Schema(description = "Gênero do cão", example = "M")
     private String sexo;
     @Schema(description = "Raça do cão", example = "Sem raça definida")
@@ -29,31 +32,39 @@ public class CachorroResponseDTO {
     @Schema(description = "Se a matrícula do cão foi aceita ou não", example = "false")
     private Boolean ativo;
     @Schema(description = "Se o cão tem pedigree ou não", example = "false")
-    private Boolean tem_pedigree;
+    @Column(name = "temPedigree")
+    private Boolean temPedigree;
     @Schema(description = "O RGA do cão", example = "RGA-123456")
     private String rga;
     @Schema(description = "", example = "sim")
-    private String sin_patinhas;
+    @Column(name = "sinPatinhas")
+    private String sinPatinhas;
     @Schema(description = "", example = "true")
     private Boolean aceito;
     @Schema(description = "Uma foto do cão", example = "https://imagem.com")
     private String imagem;
     @Schema(description = "A alergias do cão ou não", example = "Nenhuma")
     private String alergias;
+    @Schema(description = "A situação do cachorro no seu desempenho escolar", example = "...")
+    private String situacao;
 
     public CachorroResponseDTO(Cachorro cao) {
         this.id = cao.getId();
         this.nome = cao.getNome();
-        this.data_nascimento = cao.getDataNascimento();
+        this.dataNascimento = cao.getDataNascimento();
         this.tutorId = cao.getTutorId();
         this.turma = cao.getTurma();
-        this.data_cadastro = cao.getDataCadastro();
+        this.dataCadastro = cao.getDataCadastro();
         this.sexo = cao.getSexo();
         this.rga = cao.getRga();
         this.ativo = cao.getAtivo();
-        this.tem_pedigree = cao.getTemPedigree();
+        this.temPedigree = cao.getTemPedigree();
         this.rga = cao.getRga();
-        this.sin_patinhas = cao.getSinPatinhas();
+        this.sinPatinhas = cao.getSinPatinhas();
+        this.aceito = cao.getAceito();
+        this.imagem = cao.getImagem();
+        this.alergias = cao.getAlergias();
+        this.situacao = cao.getSituacao();
     }
 
     public CachorroResponseDTO() {}
@@ -66,8 +77,8 @@ public class CachorroResponseDTO {
         return nome;
     }
 
-    public Date getData_nascimento() {
-        return data_nascimento;
+    public Date getDataNascimento() {
+        return dataNascimento;
     }
 
     public Long getTutorId() {
@@ -78,8 +89,8 @@ public class CachorroResponseDTO {
         return turma;
     }
 
-    public Date getData_cadastro() {
-        return data_cadastro;
+    public Date getDataCadastro() {
+        return dataCadastro;
     }
 
     public String getSexo() {
@@ -94,16 +105,16 @@ public class CachorroResponseDTO {
         return ativo;
     }
 
-    public Boolean getTem_pedigree() {
-        return tem_pedigree;
+    public Boolean getTemPedigree() {
+        return temPedigree;
     }
 
     public String getRga() {
         return rga;
     }
 
-    public String getSin_patinhas() {
-        return sin_patinhas;
+    public String getSinPatinhas() {
+        return sinPatinhas;
     }
 
     public Boolean getAceito() {
@@ -118,21 +129,25 @@ public class CachorroResponseDTO {
         return alergias;
     }
 
+    public String getSituacao() {
+        return situacao;
+    }
+
     @Override
     public String toString() {
         return "CachorroResponseDTO{" +
                 "id=" + id +
                 ", nome='" + nome + '\'' +
-                ", data_nascimento=" + data_nascimento +
+                ", dataNascimento=" + dataNascimento +
                 ", tutor_id=" + tutorId +
                 ", turma='" + turma + '\'' +
-                ", data_cadastro=" + data_cadastro +
+                ", dataCadastro=" + dataCadastro +
                 ", sexo='" + sexo + '\'' +
                 ", raca='" + raca + '\'' +
                 ", ativo=" + ativo +
-                ", tem_pedigree=" + tem_pedigree +
+                ", temPedigree=" + temPedigree +
                 ", rga='" + rga + '\'' +
-                ", sin_patinhas='" + sin_patinhas + '\'' +
+                ", sinPatinhas='" + sinPatinhas + '\'' +
                 ", aceito=" + aceito +
                 ", imagem='" + imagem + '\'' +
                 ", alergias='" + alergias + '\'' +

@@ -1,5 +1,6 @@
 package com.api.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -10,16 +11,20 @@ public class Cachorro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
+    @Column(name = "data_nascimento")
     private Date dataNascimento;
     @Column(name = "tutor_id")
     private Long tutorId;
     private String turma;
+    @JsonProperty("data_cadastro")
     private Date dataCadastro;
     private String sexo;
     private String raca;
     private Boolean ativo;
+    @Column(name = "tem_pedigree")
     private Boolean temPedigree;
     private String rga;
+    @Column(name = "sin_patinhas")
     private String sinPatinhas;
     private Boolean aceito;
     private String imagem;
@@ -88,6 +93,10 @@ public class Cachorro {
         return tutorId;
     }
 
+    public void setTutorId(Long tutorId){
+        this.tutorId = tutorId;
+    }
+
     public String getTurma() {
         return turma;
     }
@@ -98,6 +107,10 @@ public class Cachorro {
 
     public Date getDataCadastro() {
         return dataCadastro;
+    }
+
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
 
     public String getSexo() {
@@ -134,6 +147,10 @@ public class Cachorro {
 
     public String getRga() {
         return rga;
+    }
+
+    public void setRga(String rga) {
+        this.rga = rga;
     }
 
     public String getSinPatinhas() {

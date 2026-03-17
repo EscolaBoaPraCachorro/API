@@ -67,7 +67,7 @@ public class CachorroService {
 
     public Date buscarDataNascimentoPorId(Long id) {
         CachorroResponseDTO cao = objectMapper.convertValue(repositoryCachorro.findById(id), CachorroResponseDTO.class);
-        return cao.getData_nascimento();
+        return cao.getDataNascimento();
     }
 
     public String buscarNomePorId(Long id) {
@@ -101,13 +101,13 @@ public class CachorroService {
         Cachorro caoExistente = objectMapper.convertValue(repositoryCachorro.findById(id), Cachorro.class);
 
         caoExistente.setNome(req.getNome());
-        caoExistente.setDataNascimento(req.getData_nascimento());
+        caoExistente.setDataNascimento(req.getDataNascimento());
         caoExistente.setTurma(req.getTurma());
         caoExistente.setSexo(req.getSexo());
         caoExistente.setRaca(req.getRaca());
         caoExistente.setAtivo(req.getAtivo());
-        caoExistente.setTemPedigree(req.getTem_pedigree());
-        caoExistente.setSinPatinhas(req.getSin_patinhas());
+        caoExistente.setTemPedigree(req.getTemPedigree());
+        caoExistente.setSinPatinhas(req.getSinPatinhas());
         caoExistente.setAceito(req.getAceito());
         caoExistente.setImagem(req.getImagem());
         caoExistente.setAlergia(req.getAlergias());
@@ -126,7 +126,7 @@ public class CachorroService {
         }
 
         if (caoExistente.getDataNascimento() != null) {
-            caoExistente.setDataNascimento(req.getData_nascimento());
+            caoExistente.setDataNascimento(req.getDataNascimento());
         }
 
         if (caoExistente.getTurma() != null) {
@@ -146,11 +146,11 @@ public class CachorroService {
         }
 
         if (caoExistente.getTemPedigree() != null) {
-            caoExistente.setTemPedigree(req.getTem_pedigree());
+            caoExistente.setTemPedigree(req.getTemPedigree());
         }
 
         if (caoExistente.getSinPatinhas() != null) {
-            caoExistente.setSinPatinhas(req.getSin_patinhas());
+            caoExistente.setSinPatinhas(req.getSinPatinhas());
         }
 
         if (caoExistente.getAceito() != null) {

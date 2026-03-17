@@ -1,5 +1,6 @@
 package com.api.dto.cachorro;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Column;
 
@@ -11,12 +12,15 @@ public class CachorroRequestDTO {
     @Schema(description = "Nome do cachorro", example = "Orelha")
     private String nome;
     @Schema(description = "Data de nascimeno do cachorro", example = "2016-07-08")
+    @Column(name = "data_nascimento")
     private Date dataNascimento;
     @Schema(description = "ID do tutor", example = "1")
+    @Column(name = "tutor_id")
     private Long tutorId;
-    @Schema(description = "Turma em que o cão está estudando", example = "1E")
+    @Schema(description = "Turma em que o cão está estudando", example = "A")
     private String turma;
     @Schema(description = "Data de qunado o cão foi cadastrado no sistema", example = "2026-01-01")
+    @JsonProperty("data_cadastro")
     private Date dataCadastro;
     @Schema(description = "Gênero do cão", example = "M")
     private String sexo;
@@ -25,10 +29,12 @@ public class CachorroRequestDTO {
     @Schema(description = "Se a matrícula do cão foi aceita ou não", example = "false")
     private Boolean ativo;
     @Schema(description = "Se o cão tem pedigree ou não", example = "false")
+    @Column(name = "tem_pedigree")
     private Boolean temPedigree;
     @Schema(description = "O RGA do cão", example = "RGA-123456")
     private String rga;
     @Schema(description = "", example = "sim")
+    @Column(name = "sin_patinhas")
     private String sinPatinhas;
     @Schema(description = "", example = "true")
     private Boolean aceito;
@@ -36,7 +42,7 @@ public class CachorroRequestDTO {
     private String imagem;
     @Schema(description = "A alergias do cão ou não", example = "Nenhuma")
     private String alergias;
-    @Schema(description = "", example = "...")
+    @Schema(description = "A situação do cachorro no seu desempenho escolar", example = "...")
     private String situacao;
 
     public String getNome() {
@@ -47,8 +53,12 @@ public class CachorroRequestDTO {
         this.nome = nome;
     }
 
-    public Date getData_nascimento() {
+    public Date getDataNascimento() {
         return dataNascimento;
+    }
+
+    public Long getTutorId(){
+        return tutorId;
     }
 
     public String getTurma() {
@@ -83,19 +93,27 @@ public class CachorroRequestDTO {
         this.ativo = ativo;
     }
 
-    public Boolean getTem_pedigree() {
+    public Boolean getTemPedigree() {
         return temPedigree;
     }
 
-    public void setTem_pedigree(Boolean tem_pedigree) {
+    public void setTemPedigree(Boolean tem_pedigree) {
         this.temPedigree = tem_pedigree;
     }
 
-    public String getSin_patinhas() {
+    public String getRga(){
+        return rga;
+    }
+
+    public void setRga(String rga) {
+        this.rga = rga;
+    }
+
+    public String getSinPatinhas() {
         return sinPatinhas;
     }
 
-    public void setSin_patinhas(String sin_patinhas) {
+    public void setSinPatinhas(String sin_patinhas) {
         this.sinPatinhas = sin_patinhas;
     }
 

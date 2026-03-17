@@ -3,20 +3,21 @@ POST http://localhost:8080/api/cao/inserir
 Content-Type: application/json
 
 {
-  "nome": "Orelha",
-  "dataNascimento": "2016-07-08",
-  "tutorId": 1,
-  "turma": "1E",
-  "dataCadastro": "2026-01-01",
+  "nome": "Scooby-doo",
+  "data_nascimento": "2026-03-17",
+  "tutor_id": 39,
+  "turma": "A",
+  "data_cadastro": "2027-01-01",
   "sexo": "M",
   "raca": "Sem raça definida",
-  "ativo": false,
-  "temPedigree": false,
-  "rga": "RGA-123456",
-  "sinPatinhas": "sim",
+  "ativo": true,
+  "tem_pedigree": false,
+  "rga": "RGA123456",
+  "sin_patinhas": "sim",
   "aceito": true,
   "imagem": "https://imagem.com",
-  "alergias": "Nenhuma"
+  "alergias": "Nenhuma",
+  "situacao": "SCOOBY DOBY DOOO!!!"
 }
 
 ###
