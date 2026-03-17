@@ -29,7 +29,7 @@ public class CachorroController {
     }
 
     @GetMapping("/buscarCaoPorTurma/{turma}")
-    public CachorroResponseDTO buscarCaoPorTurma(@PathVariable String turma) {
+    public List<CachorroResponseDTO> buscarCaoPorTurma(@PathVariable String turma) {
         return service.buscarCachorroPorTurma(URLDecoder.decode(turma, StandardCharsets.UTF_8));
     }
 

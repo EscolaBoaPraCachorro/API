@@ -38,8 +38,15 @@ public class CachorroService {
         return objectMapper.convertValue(cao, CachorroResponseDTO.class);
     }
 
-    public CachorroResponseDTO buscarCachorroPorTurma(String turma) {
-        return repositoryCachorro.findCachorroByTurma(turma);
+    public List<CachorroResponseDTO> buscarCachorroPorTurma(String turma) {
+        List<Cachorro> cao = repositoryCachorro.findCachorroByTurma(turma);
+        List<CachorroResponseDTO> dto = new ArrayList<>();
+
+        for (Cachorro cachorro : cao) {
+            dto.add(objectMapper.convertValue(cachorro, CachorroResponseDTO.class));
+        }
+
+        return dto;
     }
 
     public List<CachorroResponseDTO> buscarTurma(String turma) {
@@ -49,6 +56,7 @@ public class CachorroService {
         for (Cachorro cachorro : cao) {
             dto.add(objectMapper.convertValue(cachorro, CachorroResponseDTO.class));
         }
+
         return dto;
     }
 
@@ -111,9 +119,8 @@ public class CachorroService {
     }
 
     public CachorroResponseDTO atualizarParcialmente(Long id, CachorroRequestDTO req){
-        Cachorro caoExistente = repositoryCachorro.findById(id).orElse(null);
+        Cachorro caoExistente = objectMapper.convertValue(repositoryCachorro.findById(id), Cachorro.class);
 
-        assert caoExistente != null;
         if (caoExistente.getNome() != null) {
             caoExistente.setNome(req.getNome());
         }

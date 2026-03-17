@@ -52,6 +52,7 @@ public class ObservacaoService {
     public ObservacaoResponseDTO lancarObservacao(Long id_cachorro, Long id_professor, String descricao) {
         LocalDate localDate = LocalDate.now();
         Date data_atual = Date.valueOf(localDate);
+
         Observacao observacao = new Observacao(id_cachorro, id_professor, descricao, data_atual);
 
         Observacao resposta = repository.save(observacao);
