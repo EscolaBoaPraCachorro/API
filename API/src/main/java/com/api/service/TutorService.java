@@ -26,6 +26,11 @@ public class TutorService {
         this.objectMapper = objectMapper;
     }
 
+    public TutorResponseDTO buscarTutorPorId(Long id) {
+        Tutor tutor = objectMapper.convertValue(repository.findById(id), Tutor.class);
+        return objectMapper.convertValue(tutor, TutorResponseDTO.class);
+    }
+
     public Long buscarIdPorIdCachorro(Long idCachorro) {
         return service.buscarCachorroPorId(idCachorro).getTutorId();
     }
@@ -69,4 +74,6 @@ public class TutorService {
         Tutor tutorAtualizado = repository.save(tutorExistente);
         return objectMapper.convertValue(tutorAtualizado, TutorResponseDTO.class);
     }
+
+
 }

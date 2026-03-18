@@ -16,6 +16,11 @@ public class TutorController {
         this.service = service;
     }
 
+    @GetMapping("buscarTutorPorId/{id}")
+    public TutorResponseDTO buscarTutorPorId(@PathVariable Long id) {
+        return service.buscarTutorPorId(id);
+    }
+
     @GetMapping("/buscarIdPorIdCachorro/{id}")
     public Long buscarIdPorIdCachorro(@PathVariable Long id) {
         return service.buscarIdPorIdCachorro(id);
