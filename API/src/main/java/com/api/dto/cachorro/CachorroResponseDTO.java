@@ -3,7 +3,6 @@ package com.api.dto.cachorro;
 import com.api.model.Cachorro;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.persistence.Column;
 
 import java.util.Date;
 
@@ -15,10 +14,10 @@ public class CachorroResponseDTO {
     @Schema(description = "Nome do cachorro", example = "Orelha")
     private String nome;
     @Schema(description = "Data de nascimeno do cachorro", example = "2016-07-08")
-    @Column(name = "dataNascimento")
+    @JsonProperty("dataNascimento")
     private Date dataNascimento;
     @Schema(description = "ID do tutor", example = "1")
-    @Column(name = "tutor_id")
+    @JsonProperty("tutor_id")
     private Long tutorId;
     @Schema(description = "Turma em que o cão está estudando", example = "1E")
     private String turma;
@@ -32,12 +31,12 @@ public class CachorroResponseDTO {
     @Schema(description = "Se a matrícula do cão foi aceita ou não", example = "false")
     private Boolean ativo;
     @Schema(description = "Se o cão tem pedigree ou não", example = "false")
-    @Column(name = "temPedigree")
+    @JsonProperty("temPedigree")
     private Boolean temPedigree;
     @Schema(description = "O RGA do cão", example = "RGA-123456")
     private String rga;
     @Schema(description = "", example = "sim")
-    @Column(name = "sinPatinhas")
+    @JsonProperty("sinPatinhas")
     private String sinPatinhas;
     @Schema(description = "", example = "true")
     private Boolean aceito;

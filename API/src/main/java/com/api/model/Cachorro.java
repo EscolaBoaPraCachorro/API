@@ -11,9 +11,9 @@ public class Cachorro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
-    @Column(name = "data_nascimento")
+    @JsonProperty("data_nascimento")
     private Date dataNascimento;
-    @Column(name = "tutor_id")
+    @JsonProperty("tutor_id")
     private Long tutorId;
     private String turma;
     @JsonProperty("data_cadastro")
@@ -21,10 +21,10 @@ public class Cachorro {
     private String sexo;
     private String raca;
     private Boolean ativo;
-    @Column(name = "tem_pedigree")
+    @JsonProperty("tem_pedigree")
     private Boolean temPedigree;
     private String rga;
-    @Column(name = "sin_patinhas")
+    @JsonProperty("sin_patinhas")
     private String sinPatinhas;
     private Boolean aceito;
     private String imagem;

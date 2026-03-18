@@ -49,6 +49,12 @@ public class TutorController {
     @PatchMapping("/atualizarDescricao/{id}")
     public String atualizarDescricao(@RequestBody TutorRequestDTO req, @PathVariable Long id) {
         TutorResponseDTO res = service.atualizarDescricao(id, req.getDescricao());
-        return "A imagem do cachoroo, com ID: " + res.getId() + ", foi atualizada com sucesso!";
+        return "A imagem do cachorro, com ID: " + res.getId() + ", foi atualizada com sucesso!";
+    }
+
+    @PatchMapping("/atualizarImagem/{id}")
+    public String atualizarImagem(@RequestBody TutorRequestDTO req, @PathVariable Long id) {
+        TutorResponseDTO res = service.atualizarImagem(id, req.getImagem());
+        return "A imagem do cachorro, com ID: " + res.getId() + ", foi atualizada com sucesso!";
     }
 }

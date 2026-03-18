@@ -63,6 +63,11 @@ public class CachorroController {
         return service.buscarCachorroPorTutorId(id);
     }
 
+    @GetMapping("/buscarTutorIdPorCachorro/{id}")
+    public Long buscarTutorIdPorCachorro(@PathVariable Long id){
+        return service.buscarTutorIdPorCachorro(id);
+    }
+
     @PostMapping("/inserir")
     public String inserir(@RequestBody CachorroRequestDTO req) {
         CachorroResponseDTO res = service.cadastrarCachorro(req);

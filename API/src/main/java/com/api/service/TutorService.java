@@ -45,6 +45,11 @@ public class TutorService {
         return tutor.getDataNascimento();
     }
 
+    public TutorResponseDTO buscarTutorPorEmail(String email) {
+        Tutor tutor = repository.findByEmail(email);
+        return objectMapper.convertValue(tutor, TutorResponseDTO.class);
+    }
+
     public TutorResponseDTO cadastrarTutor(TutorRequestDTO dto){
         Tutor tutor = objectMapper.convertValue(dto, Tutor.class);
         Tutor cadastrado = repository.save(tutor);
@@ -58,8 +63,10 @@ public class TutorService {
         return objectMapper.convertValue(tutorAtualizado, TutorResponseDTO.class);
     }
 
-    public TutorResponseDTO buscarTutorPorEmail(String email) {
-        Tutor tutor = repository.findByEmail(email);
-        return objectMapper.convertValue(tutor, TutorResponseDTO.class);
+    public TutorResponseDTO atualizarImagem(Long id, String imagem) {
+        Tutor tutorExistente = objectMapper.convertValue(repository.findById(id), Tutor.class);
+        tutorExistente.setImagem(imagem);
+        Tutor tutorAtualizado = repository.save(tutorExistente);
+        return objectMapper.convertValue(tutorAtualizado, TutorResponseDTO.class);
     }
 }

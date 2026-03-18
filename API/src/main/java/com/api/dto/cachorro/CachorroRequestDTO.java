@@ -12,10 +12,10 @@ public class CachorroRequestDTO {
     @Schema(description = "Nome do cachorro", example = "Orelha")
     private String nome;
     @Schema(description = "Data de nascimeno do cachorro", example = "2016-07-08")
-    @Column(name = "data_nascimento")
+    @JsonProperty("data_nascimento")
     private Date dataNascimento;
     @Schema(description = "ID do tutor", example = "1")
-    @Column(name = "tutor_id")
+    @JsonProperty("tutor_id")
     private Long tutorId;
     @Schema(description = "Turma em que o cão está estudando", example = "A")
     private String turma;
@@ -29,12 +29,12 @@ public class CachorroRequestDTO {
     @Schema(description = "Se a matrícula do cão foi aceita ou não", example = "false")
     private Boolean ativo;
     @Schema(description = "Se o cão tem pedigree ou não", example = "false")
-    @Column(name = "tem_pedigree")
+    @JsonProperty("tem_pedigree")
     private Boolean temPedigree;
     @Schema(description = "O RGA do cão", example = "RGA-123456")
     private String rga;
     @Schema(description = "", example = "sim")
-    @Column(name = "sin_patinhas")
+    @JsonProperty("sin_patinhas")
     private String sinPatinhas;
     @Schema(description = "", example = "true")
     private Boolean aceito;

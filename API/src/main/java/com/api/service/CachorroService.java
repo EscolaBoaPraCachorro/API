@@ -60,6 +60,11 @@ public class CachorroService {
         return dto;
     }
 
+    public Long buscarTutorIdPorCachorro(Long id){
+        Cachorro cao = objectMapper.convertValue(repositoryCachorro.findById(id), Cachorro.class);
+        return cao.getTutorId();
+    }
+
     public String buscarImagemPorId(Long id) {
         CachorroResponseDTO cao = objectMapper.convertValue(repositoryCachorro.findById(id), CachorroResponseDTO.class);
         return cao.getImagem();
