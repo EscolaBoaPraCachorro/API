@@ -123,54 +123,60 @@ public class CachorroService {
         return objectMapper.convertValue(caoAtualizado, CachorroResponseDTO.class);
     }
 
-    public CachorroResponseDTO atualizarParcialmente(Long id, CachorroRequestDTO req){
-        Cachorro caoExistente = objectMapper.convertValue(repositoryCachorro.findById(id), Cachorro.class);
+    public CachorroResponseDTO atualizarParcialmente(Long id, CachorroRequestDTO req) {
+        Cachorro caoExistente = repositoryCachorro.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cachorro não encontrado com ID: " + id));
 
-        if (caoExistente.getNome() != null) {
+        if (req.getNome() != null) {
             caoExistente.setNome(req.getNome());
         }
 
-        if (caoExistente.getDataNascimento() != null) {
+        if (req.getDataNascimento() != null) {
             caoExistente.setDataNascimento(req.getDataNascimento());
         }
 
-        if (caoExistente.getTurma() != null) {
+        if (req.getTurma() != null) {
             caoExistente.setTurma(req.getTurma());
         }
 
-        if (caoExistente.getSexo() != null) {
+        if (req.getSexo() != null) {
             caoExistente.setSexo(req.getSexo());
         }
 
-        if (caoExistente.getRaca() != null) {
+        if (req.getRaca() != null) {
             caoExistente.setRaca(req.getRaca());
         }
 
-        if (caoExistente.getAtivo() != null) {
+        if (req.getAtivo() != null) {
             caoExistente.setAtivo(req.getAtivo());
         }
 
-        if (caoExistente.getTemPedigree() != null) {
+        if (req.getTemPedigree() != null) {
             caoExistente.setTemPedigree(req.getTemPedigree());
         }
 
-        if (caoExistente.getSinPatinhas() != null) {
+        if (req.getSinPatinhas() != null) {
             caoExistente.setSinPatinhas(req.getSinPatinhas());
         }
 
-        if (caoExistente.getAceito() != null) {
+        if (req.getAceito() != null) {
             caoExistente.setAceito(req.getAceito());
         }
 
-        if (caoExistente.getImagem() != null) {
+        if (req.getImagem() != null) {
             caoExistente.setImagem(req.getImagem());
         }
 
-        if (caoExistente.getAlergias() != null) {
+        if (req.getAlergias() != null) {
             caoExistente.setAlergia(req.getAlergias());
         }
 
+        if (req.getSituacao() != null) {
+            caoExistente.setSituacao(req.getSituacao());
+        }
+
         Cachorro atualizado = repositoryCachorro.save(caoExistente);
+
         return objectMapper.convertValue(atualizado, CachorroResponseDTO.class);
     }
 
