@@ -161,7 +161,4 @@ public class CachorroRequestDTO {
         this.dataCadastro = dataCadastro;
     }
 
-    public void setRga(String rga) {
-        this.rga = rga;
-    }
 }
