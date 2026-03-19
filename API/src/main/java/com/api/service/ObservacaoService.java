@@ -38,15 +38,9 @@ public class ObservacaoService {
         return dto;
     }
 
-    public List<ObservacaoResponseDTO> buscarObservacaoPorIdCachorroEDisciplina(Long idCachorro, Long idProfessor) {
-        List<Observacao> obs = repository.findByIdCachorroAndIdProfessor(idCachorro, idProfessor);
-        List<ObservacaoResponseDTO> dto = new ArrayList<>();
-
-        for (Observacao observacao : obs) {
-            dto.add(objectMapper.convertValue(observacao, ObservacaoResponseDTO.class));
-        }
-
-        return dto;
+    public String buscarObservacaoPorIdCachorroEDisciplina(Long idCachorro, Long idProfessor) {
+        Observacao obs = repository.findByIdCachorroAndIdProfessor(idCachorro, idProfessor);
+        return obs.getDescricao();
     }
 
     public ObservacaoResponseDTO lancarObservacao(Long id_cachorro, Long id_professor, String descricao) {

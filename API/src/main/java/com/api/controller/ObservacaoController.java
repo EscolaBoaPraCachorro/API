@@ -26,7 +26,7 @@ public class ObservacaoController {
     }
 
     @GetMapping("/buscarObservacaoPorIdCachorro/{idCachorro}/Disciplina/{idProfessor}")
-    public List<ObservacaoResponseDTO> buscarObservacaoPorIdCachorroEDisciplina(
+    public String buscarObservacaoPorIdCachorroEDisciplina(
             @PathVariable Long idCachorro, @PathVariable Long idProfessor
     ) {
         return observacaoService.buscarObservacaoPorIdCachorroEDisciplina(idCachorro, idProfessor);
