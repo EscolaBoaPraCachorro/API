@@ -42,8 +42,6 @@ public class CachorroRequestDTO {
     private String imagem;
     @Schema(description = "A alergias do cão ou não", example = "Nenhuma")
     private String alergias;
-    @Schema(description = "A situação do cachorro no seu desempenho escolar", example = "...")
-    private String situacao;
 
     public String getNome() {
         return nome;
@@ -57,8 +55,16 @@ public class CachorroRequestDTO {
         return dataNascimento;
     }
 
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
     public Long getTutorId(){
         return tutorId;
+    }
+
+    public void setTutorId(Long tutorId) {
+        this.tutorId = tutorId;
     }
 
     public String getTurma() {
@@ -67,6 +73,10 @@ public class CachorroRequestDTO {
 
     public void setTurma(String turma) {
         this.turma = turma;
+    }
+
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
     }
 
     public String getSexo() {
@@ -139,25 +149,5 @@ public class CachorroRequestDTO {
 
     public void setAlergias(String alergias) {
         this.alergias = alergias;
-    }
-
-    public String getSituacao() {
-        return situacao;
-    }
-
-    public void setSituacao(String situacao) {
-        this.situacao = situacao;
-    }
-
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    public void setTutorId(Long tutorId) {
-        this.tutorId = tutorId;
-    }
-
-    public void setDataCadastro(Date dataCadastro) {
-        this.dataCadastro = dataCadastro;
     }
 }

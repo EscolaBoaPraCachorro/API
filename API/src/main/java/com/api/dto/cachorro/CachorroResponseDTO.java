@@ -14,7 +14,7 @@ public class CachorroResponseDTO {
     @Schema(description = "Nome do cachorro", example = "Orelha")
     private String nome;
     @Schema(description = "Data de nascimeno do cachorro", example = "2016-07-08")
-    @JsonProperty("dataNascimento")
+    @JsonProperty("data_nascimento")
     private Date dataNascimento;
     @Schema(description = "ID do tutor", example = "1")
     @JsonProperty("tutor_id")
@@ -22,7 +22,7 @@ public class CachorroResponseDTO {
     @Schema(description = "Turma em que o cão está estudando", example = "1E")
     private String turma;
     @Schema(description = "Data de qunado o cão foi cadastrado no sistema", example = "2026-01-01")
-    @JsonProperty("dataCadastro")
+    @JsonProperty("data_cadastro")
     private Date dataCadastro;
     @Schema(description = "Gênero do cão", example = "M")
     private String sexo;
@@ -31,12 +31,12 @@ public class CachorroResponseDTO {
     @Schema(description = "Se a matrícula do cão foi aceita ou não", example = "false")
     private Boolean ativo;
     @Schema(description = "Se o cão tem pedigree ou não", example = "false")
-    @JsonProperty("temPedigree")
+    @JsonProperty("tem_pedigree")
     private Boolean temPedigree;
     @Schema(description = "O RGA do cão", example = "RGA-123456")
     private String rga;
     @Schema(description = "", example = "sim")
-    @JsonProperty("sinPatinhas")
+    @JsonProperty("sin_patinhas")
     private String sinPatinhas;
     @Schema(description = "", example = "true")
     private Boolean aceito;
@@ -44,8 +44,6 @@ public class CachorroResponseDTO {
     private String imagem;
     @Schema(description = "A alergias do cão ou não", example = "Nenhuma")
     private String alergias;
-    @Schema(description = "A situação do cachorro no seu desempenho escolar", example = "...")
-    private String situacao;
 
     public CachorroResponseDTO(Cachorro cao) {
         this.id = cao.getId();
@@ -63,7 +61,6 @@ public class CachorroResponseDTO {
         this.aceito = cao.getAceito();
         this.imagem = cao.getImagem();
         this.alergias = cao.getAlergias();
-        this.situacao = cao.getSituacao();
     }
 
     public CachorroResponseDTO() {}
@@ -126,10 +123,6 @@ public class CachorroResponseDTO {
 
     public String getAlergias() {
         return alergias;
-    }
-
-    public String getSituacao() {
-        return situacao;
     }
 
     @Override
