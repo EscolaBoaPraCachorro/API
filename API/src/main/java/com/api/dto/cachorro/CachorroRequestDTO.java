@@ -148,4 +148,20 @@ public class CachorroRequestDTO {
     public void setSituacao(String situacao) {
         this.situacao = situacao;
     }
+
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public void setTutorId(Long tutorId) {
+        this.tutorId = tutorId;
+    }
+
+    public void setDataCadastro(Date dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+    public void setRga(String rga) {
+        this.rga = rga;
+    }
 }
