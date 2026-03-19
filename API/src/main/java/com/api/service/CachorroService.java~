@@ -123,8 +123,6 @@ public class CachorroService {
         return objectMapper.convertValue(caoAtualizado, CachorroResponseDTO.class);
     }
 
-    ///comentario teste
-
     public CachorroResponseDTO atualizarParcialmente(Long id, CachorroRequestDTO req) {
         Cachorro caoExistente = repositoryCachorro.findById(id)
                 .orElseThrow(() -> new RuntimeException("Cachorro não encontrado com ID: " + id));
