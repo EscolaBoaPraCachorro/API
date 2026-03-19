@@ -1,0 +1,9 @@
+### GET request to example server
+PATCH http://localhost:8080/api/cao/atualizarParcialmente/30
+Content-Type: application/json
+
+{
+  "aceito": false
+}
+
+###
