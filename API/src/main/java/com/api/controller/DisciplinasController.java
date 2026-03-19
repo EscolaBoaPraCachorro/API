@@ -1,9 +1,7 @@
 package com.api.controller;
 
-import com.api.dto.disciplina.DisciplinasRequestDTO;
 import com.api.service.DisciplinasService;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.http.ResponseEntity;
 
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
@@ -18,12 +16,8 @@ public class DisciplinasController {
     }
 
     @GetMapping("/buscarIdProfessorPorDisciplina/{disciplina}")
-    public ResponseEntity<DisciplinasRequestDTO> buscarIdProfessorPorDisciplina(@PathVariable String disciplina) {
+    public Long buscarIdProfessorPorDisciplina(@PathVariable String disciplina) {
         String nomeDecodificado = URLDecoder.decode(disciplina, StandardCharsets.UTF_8);
-        Long idProfessor = service.buscarIdProfessorPorDisciplina(nomeDecodificado);
-        if (idProfessor == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(new DisciplinasRequestDTO(nomeDecodificado, idProfessor));
+        return service.buscarIdProfessorPorDisciplina(nomeDecodificado);
     }
 }

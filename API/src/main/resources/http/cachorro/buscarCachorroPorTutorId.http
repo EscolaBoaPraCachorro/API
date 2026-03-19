@@ -1,4 +1,4 @@
 ### GET request to example server
-GET http://localhost:8080/api/cao/buscarDadosCachorroPorIdTutor/18
+GET http://localhost:8080/api/cao/buscarCachorroPorIdTutor/21
 
 ###

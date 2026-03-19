@@ -116,7 +116,6 @@ public class CachorroService {
         caoExistente.setAceito(req.getAceito());
         caoExistente.setImagem(req.getImagem());
         caoExistente.setAlergia(req.getAlergias());
-        caoExistente.setSituacao(req.getSituacao());
 
         Cachorro caoAtualizado = repositoryCachorro.save(caoExistente);
 

@@ -49,7 +49,7 @@ public class ObservacaoController {
     @DeleteMapping("/excluir/{id}")
     public String excluirObservacao(@PathVariable Long id) {
         ObservacaoResponseDTO res = observacaoService.excluirObservacao(id);
-        CachorroResponseDTO cao = cachorroService.buscarCachorroPorId(id);
+        CachorroResponseDTO cao = cachorroService.buscarCachorroPorId(res.getId_cachorro());
         return "A observação do cachorro " + cao.getNome() + "foi escluido com sucesso!";
     }
 }
